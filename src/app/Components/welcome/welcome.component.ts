@@ -22,6 +22,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   test() {
-    this.cs.getClass("bard");
+    this.cs.getClass("barbarian");
   }
 }

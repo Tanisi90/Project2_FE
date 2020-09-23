@@ -2,10 +2,10 @@ import { Level } from './level';
 import { SubclassLevel } from './subclass-level';
 
 export class Subclass {
-    private name: string;
-    private flavor: string;
-    private desc: string;
-    private levels: SubclassLevel[];
+    public name: string;
+    public flavor: string;
+    public desc: string;
+    public levels: SubclassLevel[];
     
     constructor(name: string, flavor: string, desc: string, levels: SubclassLevel[]) {
         this.name = name;

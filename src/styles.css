@@ -13,6 +13,12 @@ body {
     font-weight: normal !important;
 }
 
+.btn.drpdwn {
+    padding-left: 23px !important;
+    font-weight: normal !important;
+    text-align: left !important;
+}
+
 a:active, a:visited {
     color: black !important;
     background-color: white !important;

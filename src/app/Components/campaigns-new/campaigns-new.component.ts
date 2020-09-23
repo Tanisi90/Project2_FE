@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./campaigns-new.component.css']
 })
 export class CampaignsNewComponent implements OnInit {
-  type = "Hidden";
+  hidden: boolean;
 
-  constructor() { }
+  constructor() {
+    this.hidden = true;
+  }
 
   ngOnInit(): void {
   }

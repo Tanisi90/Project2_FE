@@ -19,12 +19,12 @@
                 <td><textarea id="campaignsNewDescriptionField" placeholder="Separate usernames by line breaks!" rows="4" cols="50"></textarea></td>
             </tr>
             <tr>
-                <td colspan="2"><div class="btn-group btn-group-toggle" id="filterCategory" data-toggle="buttons">
-                    <label class="btn radio btn-outline-light" (click) = "type='Hidden'">
-                        <input type="radio" name="type" autocomplete="off" checked>Hidden
+                <td colspan="2"><div ngbRadioGroup class="btn-group btn-group-toggle" id="campaignsNewTypeRadio">
+                    <label class="btn radio btn-outline-light" [class.active]="hidden" ngbButtonLabel>
+                        <input ngbButton type="radio" [(ngModel)]="hidden" [value]="true">Hidden
                     </label>
-                    <label class="btn radio btn-outline-light" (click) = "type='Public'">
-                        <input type="radio" name="type" autocomplete="off" checked>Public
+                    <label class="btn radio btn-outline-light" [class.active]="!hidden" ngbButtonLabel>
+                        <input ngbButton type="radio" [(ngModel)]="hidden" [value]="false">Public
                     </label>
                 </div></td>
             </tr>

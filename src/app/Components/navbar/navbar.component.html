@@ -62,10 +62,22 @@
             <button class="btn btn-outline-info btn-block" id="dropdownReference" ngbDropdownToggle>Reference</button>
             <div class="w-100" ngbDropdownMenu>
                 <button ngbDropdownItem>Races</button>
-                <button ngbDropdownItem>Classes</button>
-                <button ngbDropdownItem>Monsters</button>
-                <button ngbDropdownItem>Items</button>
-                <button ngbDropdownItem>Spells</button>
+                <div ngbDropdown placement="right-top" class="dropdown dropright">
+                    <button class="btn drpdwn btn-block" id="dropdownClasses" ngbDropdownToggle>Classes</button>
+                    <div class="w-100" ngbDropdownMenu>
+                        <button ngbDropdownItem>Barbarian</button>
+                        <button ngbDropdownItem>Bard</button>
+                        <button ngbDropdownItem>Cleric</button>
+                        <button ngbDropdownItem>Druid</button>
+                        <button ngbDropdownItem>Fighter</button>
+                        <button ngbDropdownItem>Monk</button>
+                        <button ngbDropdownItem>Paladin</button>
+                        <button ngbDropdownItem>Ranger</button>
+                        <button ngbDropdownItem>Rogue</button>
+                        <button ngbDropdownItem>Sorcerer</button>
+                        <button ngbDropdownItem>Warlock</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
