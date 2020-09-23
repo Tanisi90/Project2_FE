@@ -1,11 +1,11 @@
-<div class="row justify-content-center" *ngIf="!loggedIn">
+<div class="row justify-content-center">
     <div class="col">
         <div ngbButton class="btn-block">
             <a routerLink="/" class="btn home btn-outline-info btn-block" role="button">Home</a>
         </div>
     </div>
     <div class="col">
-        <div ngbDropdown class="btn-block">
+        <div ngbDropdown class="btn-block" *ngIf="!loggedIn">
             <button class="btn btn-outline-info btn-block" id="dropdownLogin" ngbDropdownToggle>Login</button>
             <div class="w-100" ngbDropdownMenu>
                 <form class="px-4 py-3">
@@ -27,50 +27,7 @@
                 <a class="dropdown-item" routerLink="/register">Register</a>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <div ngbDropdown class="btn-block">
-            <button class="btn btn-outline-info btn-block" id="dropdownCharacters"
-                ngbDropdownToggle>Characters</button>
-            <div class="w-100" ngbDropdownMenu>
-                <button ngbDropdownItem>Character List</button>
-                <button ngbDropdownItem>Make New Character</button>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div ngbDropdown class="d-inline-block btn-block">
-            <button class="btn btn-outline-info btn-block" id="dropdownCampaigns" ngbDropdownToggle>Campaigns</button>
-            <div class="w-100" ngbDropdownMenu>
-                <button ngbDropdownItem>Campaign List</button>
-                <a routerLink="/campaigns/new" routerLinkActive="active" ngbDropdownItem>Make New Campaign</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div ngbDropdown class="d-inline-block btn-block">
-            <button class="btn btn-outline-info btn-block" id="dropdownReference" ngbDropdownToggle>Reference</button>
-            <div class="w-100" ngbDropdownMenu>
-                <button ngbDropdownItem>Races</button>
-                <button ngbDropdownItem>Classes</button>
-                <button ngbDropdownItem>Monsters</button>
-                <button ngbDropdownItem>Items</button>
-                <button ngbDropdownItem>Spells</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="row justify-content-center" *ngIf="loggedIn">
-    <div class="col">
-        <div ngbButton class="btn-block">
-            <a routerLink="/" routerLinkActive="active" class="btn home btn-outline-info btn-block" role="button">Home</a>
-        </div>
-    </div>
-    <div class="col">
-        <div ngbDropdown class="btn-block">
+        <div ngbDropdown class="btn-block" *ngIf="loggedIn">
             <button class="btn btn-outline-info btn-block" id="dropdownUser"
                 ngbDropdownToggle>User</button>
             <div class="w-100" ngbDropdownMenu>
@@ -84,7 +41,7 @@
             <button class="btn btn-outline-info btn-block" id="dropdownCharacters"
                 ngbDropdownToggle>Characters</button>
             <div class="w-100" ngbDropdownMenu>
-                <button ngbDropdownItem>My Characters</button>
+                <button ngbDropdownItem *ngIf="loggedIn">My Characters</button>
                 <button ngbDropdownItem>Character List</button>
                 <button ngbDropdownItem>Make New Character</button>
             </div>
@@ -94,9 +51,9 @@
         <div ngbDropdown class="d-inline-block btn-block">
             <button class="btn btn-outline-info btn-block" id="dropdownCampaigns" ngbDropdownToggle>Campaigns</button>
             <div class="w-100" ngbDropdownMenu>
-                <button ngbDropdownItem>My Campaigns</button>
+                <button ngbDropdownItem *ngIf="loggedIn">My Campaigns</button>
                 <button ngbDropdownItem>Campaign List</button>
-                <button ngbDropdownItem>Make New Campaign</button>
+                <a routerLink="/campaigns/new" routerLinkActive="active" ngbDropdownItem>Make New Campaign</a>
             </div>
         </div>
     </div>

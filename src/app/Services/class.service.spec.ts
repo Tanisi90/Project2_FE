@@ -6,7 +6,7 @@ import { ClassService } from './class.service';
 
 describe('ClassService', () => {
   let service: ClassService;
-  let httpClient: HttpClient;
+  let http: HttpClient;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
@@ -16,9 +16,9 @@ describe('ClassService', () => {
     });
 
     // Inject the http service and test controller for each test
-    httpClient = TestBed.inject(HttpClient);
+    http = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
-    service = new ClassService(httpClient);
+    service = new ClassService(http);
   });
 
   it('should be created', () => {
@@ -29,14 +29,25 @@ describe('ClassService', () => {
     expect(classService.getClass).toBeTruthy();
   }));
 
-  it('should give me nothing', async() => {
+  it('should give me nothing', () => {
     service.getClass("barbarian").subscribe((event: HttpEvent<any>) => {
-      switch (event.type) {
-        case HttpEventType.Response:
-          expect(event.body).toEqual(null);
+      if (event.type == HttpEventType.Response) {
+          expect(event.body).toEqual(null); // because I'm a pessimist.
+      } else {
+        console.log("I didn't get a response at all!");
+        expect(event == null);
       }
+      console.log("Heck, I don't even print.");
     });
-    const mockReq = httpTestingController.expectOne("https://www.dnd5eapi.co/api/classes/barbarian/");
-    expect(mockReq.request.responseType).toEqual('json');
+    console.log("You shouldn't even be here.");
+    fail();
+  });
+
+  it("should actually work", () => {
+    http.get('https://www.googleapis.com/customsearch/v1').subscribe((resp: any) => {
+      console.log("I got something!");
+      expect(true).toBe(true);
+    });
+    fail();
   });
 });

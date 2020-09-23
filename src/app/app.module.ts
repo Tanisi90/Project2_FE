@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginService } from './Services/login.service';
 import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.component';
 import { ClassesComponent } from './components/classes/classes.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { CharactersNewComponent } from './components/characters-new/characters-new.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { ClassesComponent } from './components/classes/classes.component';
     WelcomeComponent,
     RegisterComponent,
     CampaignsNewComponent,
-    ClassesComponent
+    ClassesComponent,
+    UserEditComponent,
+    CharactersNewComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ import { ClassesComponent } from './components/classes/classes.component';
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

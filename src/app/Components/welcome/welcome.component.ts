@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { ClassService } from 'src/app/Services/class.service';
 
 @Component({
   selector: 'app-welcome',
@@ -15,9 +16,12 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cs: ClassService) { }
 
   ngOnInit(): void {
   }
 
+  test() {
+    this.cs.getClass("bard");
+  }
 }
