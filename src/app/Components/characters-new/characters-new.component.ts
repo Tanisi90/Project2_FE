@@ -44,6 +44,9 @@ export class CharactersNewComponent implements OnInit {
   changeSpells(){
     var spells:HTMLElement = <HTMLElement>document.getElementById("spells")
     spells.hidden = false;
+    for(var l in this.clss.spells){
+      console.log(l);
+    }
     
   }
 
