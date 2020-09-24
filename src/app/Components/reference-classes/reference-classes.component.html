@@ -5,6 +5,7 @@
                 <td><b>Hit Die:</b></td>
                 <td>1d{{clss.hitDie}} per {{clss.name}} level</td>
             </tr>
+            <br>
             <tr>
                 <td colspan="2">
                     <b><u>Proficiencies</u></b>
@@ -25,6 +26,7 @@
                     <b>Saving Throws: </b> {{saveList}}
                 </td>
             </tr>
+            <br>
             <tr>
                 <td colspan="2">
                     <b><u>Starting Equipment</u></b>
@@ -36,6 +38,7 @@
                 </td>
             </tr>
         </table>
+        <br>
         <table>
             <tr>
                 <th><u>Level</u></th>
@@ -50,6 +53,7 @@
                 <td class="lvl">{{parseFeatures(lvl.features)}}</td>
             </tr>
         </table>
+        <br>
         <table>
             <tr *ngFor="let lvl of clss.levels">
                 <div *ngFor="let feature of lvl.features">
@@ -60,6 +64,7 @@
                 </div>
             </tr>
         </table>
+        <br>
         <table class="spells">
             <tr *ngFor="let spell of clss.spells">
                 <td>

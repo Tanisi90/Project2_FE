@@ -20,6 +20,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './Components/auth/auth.component';
 import { ReferenceClassesComponent } from './components/reference-classes/reference-classes.component';
+import { ReferenceRacesComponent } from './components/reference-races/reference-races.component';
 
 
 
@@ -36,6 +37,7 @@ import { ReferenceClassesComponent } from './components/reference-classes/refere
     LoginComponent,
     AuthComponent,
     ReferenceClassesComponent,
+    ReferenceRacesComponent,
   ],
 
   imports: [

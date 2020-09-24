@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { ClassService } from 'src/app/Services/class.service';
+import { RaceService } from 'src/app/Services/race.service';
 
 @Component({
   selector: 'app-welcome',
@@ -16,12 +16,8 @@ import { ClassService } from 'src/app/Services/class.service';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(private cs: ClassService) { }
+  constructor(private rs: RaceService) { }
 
   ngOnInit(): void {
-  }
-
-  test() {
-    this.cs.getClass("wizard");
   }
 }

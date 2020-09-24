@@ -32,12 +32,19 @@ export class CharactersNewComponent implements OnInit {
 
   classSpecs(): void{
     var cClass:HTMLInputElement = <HTMLInputElement>document.getElementById("charClass");
-    this.cs.getClass(cClass.value).subscribe(
+    this.cs.setIndex(cClass.value);
+    this.cs.getClass().subscribe(
       (response:any)=>{
         this.clss = this.cs.parseClass(response);
         this.classProfs(response);
-        this.changeSpells(response);
+        this.changeSpells();
       });
+  }
+
+  changeSpells(){
+    var spells:HTMLElement = <HTMLElement>document.getElementById("spells")
+    spells.hidden = false;
+    
   }
 
   classProfs(response:any){

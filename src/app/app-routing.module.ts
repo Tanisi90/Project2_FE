@@ -9,6 +9,7 @@ import { AuthComponent } from './Components/auth/auth.component';
 import { LoginComponent } from './Components/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ReferenceClassesComponent } from './components/reference-classes/reference-classes.component';
+import { ReferenceRacesComponent } from './components/reference-races/reference-races.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'campaigns/new', component: CampaignsNewComponent}, // canActivate: [AuthGuard]
   { path: 'characters/new', component: CharactersNewComponent }, 
   { path: 'reference/classes', component: ReferenceClassesComponent },
+  { path: 'reference/races', component: ReferenceRacesComponent },
   { path: 'auth', component: AuthComponent},
   { path: 'login', component: LoginComponent}
 ];
