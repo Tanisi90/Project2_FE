@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { User } from 'src/app/models/user';
-
-// import { User } from  '../user';
+import { ClassService } from 'src/app/Services/class.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,8 +15,22 @@ export class NavbarComponent implements OnInit {
   loggedIn : boolean = false;
 
   u: User;
-  constructor(private login: LoginService, private formBuilder: FormBuilder ) {
+  constructor(private ls: LoginService, private cs: ClassService, private formBuilder: FormBuilder, private router: Router) {
+    //this.ls.loggedIn.subscribe( value => {
+      //this.loggedIn = value;
+  //});
+}
+
+navToClass(index: string) {
+  this.cs.setIndex(index);
+  if(this.router.url != '/reference/classes') {
+    this.router.navigateByUrl('/reference/classes');
+  } else {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/reference/classes');
+  }); 
   }
+}
     // this.loginService.loggedIn.subscribe( value => {
     //     this.loggedIn = value;
     authForm: FormGroup;
@@ -33,21 +47,21 @@ export class NavbarComponent implements OnInit {
     }
   
     signIn(){
+
       let un =(<HTMLInputElement>document.getElementById('usernameField')).value
       let p =(<HTMLInputElement>document.getElementById('passwordField')).value
-      this.login.signIn(un, p).subscribe((users :User) => {
-        this.u = users;
-        this.login.update(users).subscribe();
+      this.isSubmitted = true;
+      if(this.authForm.invalid){
+        return 'Invalid Username or Password';
       }
-      );
-    }
- 
-      // console.log(un);
-      // this.isSubmitted = true;
-      // if(this.authForm.invalid){
-      //   return 'Invalid Username or Password';
-      // }
-      //   }
+      //this.login.signIn(un, p).subscribe((users:any) => {
+        //this.u = users;
+        console.log(this.u);
+         {
+
+        }
+
+      }
 
   // login() {
   //   this.loginService.loggedIn.next(true);
@@ -55,5 +69,6 @@ export class NavbarComponent implements OnInit {
   
   // logout() {
   //   this.loginService.loggedIn.next(false);
+  // }
  
 }
