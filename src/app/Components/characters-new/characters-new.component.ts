@@ -37,13 +37,16 @@ export class CharactersNewComponent implements OnInit {
       (response:any)=>{
         this.clss = this.cs.parseClass(response);
         this.classProfs(response);
-        this.changeSpells();
+        if(response["spells"] != null){
+          this.changeSpells();
+        }
       });
   }
 
   changeSpells(){
     var spells:HTMLElement = <HTMLElement>document.getElementById("spells")
     spells.hidden = false;
+    console.log("??");
     for(var l in this.clss.spells){
       console.log(l);
     }
