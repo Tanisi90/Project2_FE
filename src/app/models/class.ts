@@ -5,7 +5,6 @@ import { Subclass } from './subclass';
 export class Class {
     public name: string;
     public hitDie: number;
-    public chooseProf: number;
     public skillProf: string[];
     public proficiencies: string[];
     public savingProf: string[];
@@ -14,10 +13,9 @@ export class Class {
     public levels: Level[];
     public spells: Link[];
 
-    constructor(name: string, hitDie: number, chooseProf: number, skillProf: string[], proficiencies: string[], savingProf: string[], equipment: string[], subclasses: Subclass[], levels: Level[], spells: Link[]) {
+    constructor(name: string, hitDie: number, skillProf: string[], proficiencies: string[], savingProf: string[], equipment: string[], subclasses: Subclass[], levels: Level[], spells: Link[]) {
         this.name = name;
         this.hitDie = hitDie;
-        this.chooseProf = chooseProf;
         this.skillProf = skillProf;
         this.proficiencies = proficiencies;
         this.savingProf = savingProf;

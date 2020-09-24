@@ -25,11 +25,11 @@ a:active, a:visited {
 }
 
 a.home {
-    color: teal !important;
-    background-color: transparent !important;
+    color: #5bc0de !important;
+    background-color: black !important;
 }
 
 a.home:hover {
     color: white !important;
-    background-color: teal !important;
+    background-color: #5bc0de !important;
 }

@@ -30,7 +30,7 @@ export class ClassService {
   parseClass(r: any): Class {
     let profSkills: string[] = [];
     for (let i in r["proficiency_choices"]) {
-      let list: string = " Choose " + r["proficiency_choices"][i]["choose"] + " from: ";
+      let list: string = "Choose " + r["proficiency_choices"][i]["choose"] + " from: ";
       let selections: string[] = [];
       for (let j in r["proficiency_choices"][i]["from"]) {
         selections.push(r["proficiency_choices"][i]["from"][j]["name"]);
@@ -58,7 +58,7 @@ export class ClassService {
     } else {
       spells = null;
     }
-    let c = new Class(r["name"], r["hit_die"], r["proficiency_choices"][0]["choose"], profSkills, profs, sThrows, this.parseEquipment(), this.parseSubclass(), this.parseLevels(), spells);
+    let c = new Class(r["name"], r["hit_die"], profSkills, profs, sThrows, this.parseEquipment(), this.parseSubclass(), this.parseLevels(), spells);
     console.log(c);
     return c;
   };
@@ -84,13 +84,54 @@ export class ClassService {
           if(r["starting_equipment_options"][i]["from"][j]["equipment"] != null) { // If it's regular equipment
             name = r["starting_equipment_options"][i]["from"][j]["equipment"]["name"];
             num = r["starting_equipment_options"][i]["from"][j]["quantity"];
-          } else { // Else, it's a weapon category  
-          num = r["starting_equipment_options"][i]["from"][j]["equipment_option"]["choose"];
-            name = r["starting_equipment_options"][i]["from"][j]["equipment_option"]["from"]["equipment_category"]["name"];
+          } else if(r["starting_equipment_options"][i]["from"][j]["equipment_option"] != null) { // Else, if it's a weapon category  
+            num = r["starting_equipment_options"][i]["from"][j]["equipment_option"]["choose"];
+            if(r["starting_equipment_options"][i]["from"][j]["equipment_option"]["from"]["equipment_category"] != null) {
+              name = r["starting_equipment_options"][i]["from"][j]["equipment_option"]["from"]["equipment_category"]["name"];
+            } else {
+              name = r["starting_equipment_options"][i]["from"][j]["equipment_option"]["from"]["name"];
+            }
+          } else if(r["starting_equipment_options"][i]["from"][j]["name"] != null) { // Else, if it's an equipment category
+            num = r["starting_equipment_options"][i]["choose"];
+            name = r["starting_equipment_options"][i]["from"][j]["name"];
+          } else { // Else, it's a bundle!
+            let bundle: string[] = [];
+            let tied: string = "";
+            bundle.push("(");
+            for(let k in r["starting_equipment_options"][i]["from"][j]) {
+              if(r["starting_equipment_options"][i]["from"][j][k]["equipment_option"] != null) {
+                num = r["starting_equipment_options"][i]["from"][j][k]["equipment_option"]["choose"];
+                name = r["starting_equipment_options"][i]["from"][j][k]["equipment_option"]["from"]["equipment_category"]["name"];
+              } else {
+                num = r["starting_equipment_options"][i]["from"][j][k]["quantity"];
+                name = r["starting_equipment_options"][i]["from"][j][k]["equipment"]["name"];
+              }
+              if(num == undefined||num == 1) {
+                bundle.push(name);
+              } else {
+                bundle.push(name + " x" + num);
+              }
+            }
+            bundle.push(")");
+            bundle.forEach((value, index) => {
+              if(index < 2 || index == (bundle.length - 1)) {
+                tied += value;
+              } else {
+                tied += "; " + value;
+              }
+            });
+            choices.push(tied);
+            continue;
           }
-          if(num == undefined) {
+          if(r["starting_equipment_options"][i]["from"][j]["prerequisites"] != null) {
+            if(num == 1) {
+              choices.push(name + " (if proficient)");
+            } else {
+              choices.push(name + " x" + num + " (if proficient)")
+            }
+          } else if(num == undefined||num == 1) {
             choices.push(name);
-          } else {
+          } else if(num > 0) {
             choices.push(name + " x" + num);
           }
         }
@@ -98,7 +139,7 @@ export class ClassService {
           if(index == 0) {
             list += value;
           } else {
-            list += ", " + value;
+            list += "; " + value;
           }
         });
         gear.push("Choose " + choose + " item(s) from: " + list);

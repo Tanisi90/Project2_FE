@@ -1,12 +1,12 @@
 <div class="row justify-content-center">
     <div class="col">
         <div ngbButton class="btn-block">
-            <a routerLink="/" class="btn home btn-outline-info btn-block" role="button">Home</a>
+            <a routerLink="/" class="btn home btn-outline-info btn-block" style="background-color: black;" role="button">Home</a>
         </div>
     </div>
     <div class="col">
         <div ngbDropdown class="btn-block" *ngIf="!loggedIn">
-            <button class="btn btn-outline-info btn-block" id="dropdownLogin" ngbDropdownToggle>Login</button>
+            <button class="btn btn-outline-info btn-block" style="background-color: black;" id="dropdownLogin" ngbDropdownToggle>Login</button>
             <div class="w-100" ngbDropdownMenu>
                 <form class="px-4 py-3">
                     <div class="form-group">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div ngbDropdown class="btn-block" *ngIf="loggedIn">
-            <button class="btn btn-outline-info btn-block" id="dropdownUser"
+            <button class="btn btn-outline-info btn-block" id="dropdownUser" style="background-color: black;"
                 ngbDropdownToggle>User</button>
             <div class="w-100" ngbDropdownMenu>
                 <button ngbDropdownItem>Edit Profile</button>
@@ -38,18 +38,18 @@
     </div>
     <div class="col">
         <div ngbDropdown class="btn-block">
-            <button class="btn btn-outline-info btn-block" id="dropdownCharacters"
+            <button class="btn btn-outline-info btn-block" id="dropdownCharacters" style="background-color: black;"
                 ngbDropdownToggle>Characters</button>
             <div class="w-100" ngbDropdownMenu>
                 <button ngbDropdownItem *ngIf="loggedIn">My Characters</button>
                 <button ngbDropdownItem>Character List</button>
-                <button ngbDropdownItem>Make New Character</button>
+                <a routerLink="/characters/new" routerLinkActive="active" ngbDropdownItem>Make New Character</a>
             </div>
         </div>
     </div>
     <div class="col">
         <div ngbDropdown class="d-inline-block btn-block">
-            <button class="btn btn-outline-info btn-block" id="dropdownCampaigns" ngbDropdownToggle>Campaigns</button>
+            <button class="btn btn-outline-info btn-block" id="dropdownCampaigns" style="background-color: black;" ngbDropdownToggle>Campaigns</button>
             <div class="w-100" ngbDropdownMenu>
                 <button ngbDropdownItem *ngIf="loggedIn">My Campaigns</button>
                 <button ngbDropdownItem>Campaign List</button>
@@ -59,10 +59,10 @@
     </div>
     <div class="col">
         <div ngbDropdown class="d-inline-block btn-block">
-            <button class="btn btn-outline-info btn-block" id="dropdownReference" ngbDropdownToggle>Reference</button>
+            <button class="btn btn-outline-info btn-block" id="dropdownReference" style="background-color: black;" ngbDropdownToggle>Reference</button>
             <div class="w-100" ngbDropdownMenu>
                 <button ngbDropdownItem>Races</button>
-                <div ngbDropdown placement="right-top" class="dropdown dropright">
+                <div ngbDropdown placement="left-top" class="dropdown dropleft">
                     <button class="btn drpdwn btn-block" id="dropdownClasses" ngbDropdownToggle>Classes</button>
                     <div class="w-100" ngbDropdownMenu>
                         <button ngbDropdownItem>Barbarian</button>
