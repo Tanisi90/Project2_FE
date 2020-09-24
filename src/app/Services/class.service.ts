@@ -18,9 +18,12 @@ export class ClassService {
 
   constructor(private http: HttpClient) { }
 
-  getClass(index: string): Observable<any> {
+  setIndex(index: string) {
     this.index = index;
-    return this.http.get(this.url + "/api/classes/" + index + "/");
+  }
+
+  getClass(): Observable<any> {
+    return this.http.get(this.url + "/api/classes/" + this.index + "/");
   }
 
   parseClass(r: any): Class {
@@ -57,7 +60,6 @@ export class ClassService {
       spells = null;
     }
     let c = new Class(r["name"], r["hit_die"], choose, profSkills, profs, sThrows, this.parseEquipment(), this.parseSubclass(), this.parseLevels(), spells);
-    console.log(c);
     return c;
   };
 

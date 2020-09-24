@@ -16,9 +16,8 @@ export class ReferenceClassesComponent implements OnInit {
   public num: number = 0;
 
   constructor(private cs: ClassService) {
-    this.cs.getClass("cleric").subscribe(
+    this.cs.getClass().subscribe(
       (response: any) => {
-        console.log("I got it!");
         this.clss = this.cs.parseClass(response);
         for(let i = 0; i < this.clss.proficiencies.length; i++) {
           if(i == 0) {

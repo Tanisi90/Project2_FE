@@ -61,21 +61,34 @@
         <div ngbDropdown class="d-inline-block btn-block">
             <button class="btn btn-outline-info btn-block" id="dropdownReference" style="background-color: black;" ngbDropdownToggle>Reference</button>
             <div class="w-100" ngbDropdownMenu>
-                <button ngbDropdownItem>Races</button>
+                <div ngbDropdown placement="left-top" class="dropdown dropleft">
+                    <button class="btn drpdwn btn-block" id="dropdownRaces" ngbDropdownToggle>Races</button>
+                    <div class="w-100" ngbDropdownMenu>
+                        <a routerLink="/reference/races" routerLinkActive="active" ngbDropdownItem>Dragonborn</a>
+                        <button ngbDropdownItem>Dwarf</button>
+                        <button ngbDropdownItem>Elf</button>
+                        <button ngbDropdownItem>Gnome</button>
+                        <button ngbDropdownItem>Half-Elf</button>
+                        <button ngbDropdownItem>Half-Orc</button>
+                        <button ngbDropdownItem>Halfling</button>
+                        <button ngbDropdownItem>Human</button>
+                        <button ngbDropdownItem>Tiefling</button>
+                    </div>
+                </div>
                 <div ngbDropdown placement="left-top" class="dropdown dropleft">
                     <button class="btn drpdwn btn-block" id="dropdownClasses" ngbDropdownToggle>Classes</button>
                     <div class="w-100" ngbDropdownMenu>
-                        <a routerLink="/reference/classes" routerLinkActive="active" ngbDropdownItem>Barbarian</a>
-                        <button ngbDropdownItem>Bard</button>
-                        <button ngbDropdownItem>Cleric</button>
-                        <button ngbDropdownItem>Druid</button>
-                        <button ngbDropdownItem>Fighter</button>
-                        <button ngbDropdownItem>Monk</button>
-                        <button ngbDropdownItem>Paladin</button>
-                        <button ngbDropdownItem>Ranger</button>
-                        <button ngbDropdownItem>Rogue</button>
-                        <button ngbDropdownItem>Sorcerer</button>
-                        <button ngbDropdownItem>Warlock</button>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('barbarian')" ngbDropdownItem>Barbarian</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('bard')" ngbDropdownItem>Bard</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('cleric')" ngbDropdownItem>Cleric</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('druid')" ngbDropdownItem>Druid</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('fighter')" ngbDropdownItem>Fighter</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('monk')" ngbDropdownItem>Monk</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('paladin')" ngbDropdownItem>Paladin</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('ranger')" ngbDropdownItem>Ranger</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('rogue')" ngbDropdownItem>Rogue</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('sorcerer')" ngbDropdownItem>Sorcerer</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('warlock')" ngbDropdownItem>Warlock</a>
                     </div>
                 </div>
             </div>
