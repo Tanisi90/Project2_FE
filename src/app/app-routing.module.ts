@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
-import { RegisterComponent } from './components/register/register.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.component';
-import { ClassesComponent } from './components/classes/classes.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { WelcomeComponent } from './Components/welcome/welcome.component';
+import { CampaignsNewComponent } from './Components/campaigns-new/campaigns-new.component';
+import { ClassesComponent } from './Components/classes/classes.component';
 import { AuthComponent } from './Components/auth/auth.component';
-import { LoginComponent } from './Components/login/login.component';
-import { AuthGuard } from './auth.guard';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+//import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'campaigns/new', component: CampaignsNewComponent}, // canActivate: [AuthGuard] 
   { path: 'test', component: ClassesComponent },
   { path: 'auth', component: AuthComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: NavbarComponent}
 ];
 
 @NgModule({
