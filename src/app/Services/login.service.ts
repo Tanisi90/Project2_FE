@@ -59,5 +59,3 @@ export class LoginService {
     return this.authUser.asObservable();
   }
 }
-
-
