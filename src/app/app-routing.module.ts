@@ -5,10 +5,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.component';
 import { CharactersNewComponent } from './components/characters-new/characters-new.component';
-import { ClassesComponent } from './components/classes/classes.component';
 import { AuthComponent } from './Components/auth/auth.component';
 import { LoginComponent } from './Components/login/login.component';
 import { AuthGuard } from './auth.guard';
+import { ReferenceClassesComponent } from './components/reference-classes/reference-classes.component';
 
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'campaigns/new', component: CampaignsNewComponent}, // canActivate: [AuthGuard]
   { path: 'characters/new', component: CharactersNewComponent }, 
-  { path: 'test', component: ClassesComponent },
+  { path: 'reference/classes', component: ReferenceClassesComponent },
   { path: 'auth', component: AuthComponent},
   { path: 'login', component: LoginComponent}
 ];

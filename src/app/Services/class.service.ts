@@ -7,6 +7,7 @@ import { Level } from '../models/level';
 import { Feature } from '../models/feature';
 import { SubclassLevel } from '../models/subclass-level';
 import { Link } from '../models/link';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,29 +18,26 @@ export class ClassService {
 
   constructor(private http: HttpClient) { }
 
-  getClass(index: string): Class {
+  getClass(index: string): Observable<any> {
     this.index = index;
-    this.http.get(this.url + "/api/classes/" + index + "/").subscribe(
-      (response: any) => {
-        return this.parseClass(response);
-      }
-    );
-    return null;
+    return this.http.get(this.url + "/api/classes/" + index + "/");
   }
 
   parseClass(r: any): Class {
+    let choose: number[] = [];
     let profSkills: string[] = [];
     for (let i in r["proficiency_choices"]) {
-      let list: string = "Choose " + r["proficiency_choices"][i]["choose"] + " from: ";
+      choose.push(r["proficiency_choices"][i]["choose"])
       let selections: string[] = [];
       for (let j in r["proficiency_choices"][i]["from"]) {
         selections.push(r["proficiency_choices"][i]["from"][j]["name"]);
       }
+      let list: string = "";
       selections.forEach((value, index) => {
         if(index == 0) {
-          list += value;
+          list += value.replace('Skill: ','');
         } else {
-          list += ", " + value;
+          list += ", " + value.replace('Skill: ','');
         }
       });
       profSkills.push(list);
@@ -58,7 +56,7 @@ export class ClassService {
     } else {
       spells = null;
     }
-    let c = new Class(r["name"], r["hit_die"], profSkills, profs, sThrows, this.parseEquipment(), this.parseSubclass(), this.parseLevels(), spells);
+    let c = new Class(r["name"], r["hit_die"], choose, profSkills, profs, sThrows, this.parseEquipment(), this.parseSubclass(), this.parseLevels(), spells);
     console.log(c);
     return c;
   };
@@ -72,7 +70,14 @@ export class ClassService {
         let num: number = 0;
         name = r["starting_equipment"][i]["equipment"]["name"];
         num = r["starting_equipment"][i]["quantity"];
-        gear.push(name + " x" + num);
+        if(name == "Leather") {
+          name += " Armor";
+        }
+        if(num == 1) {
+          gear.push(name);
+        } else if(num > 0) {
+          gear.push(name + " x" + num);
+        }
       }
       for(let i in r["starting_equipment_options"]) {
         let list: string = "";
@@ -106,6 +111,9 @@ export class ClassService {
                 num = r["starting_equipment_options"][i]["from"][j][k]["quantity"];
                 name = r["starting_equipment_options"][i]["from"][j][k]["equipment"]["name"];
               }
+              if(name == "Leather") {
+                name += " Armor";
+              }
               if(num == undefined||num == 1) {
                 bundle.push(name);
               } else {
@@ -122,6 +130,9 @@ export class ClassService {
             });
             choices.push(tied);
             continue;
+          }
+          if(name == "Leather") {
+            name += " Armor";
           }
           if(r["starting_equipment_options"][i]["from"][j]["prerequisites"] != null) {
             if(num == 1) {
