@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,6 +10,6 @@ export class AuthComponent implements OnInit {
 
   constructor() { }
   
-  ngOnInit(): void {
+  ngOnInit():void{
   }
 }

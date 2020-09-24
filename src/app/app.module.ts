@@ -8,20 +8,18 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BannerComponent } from './components/banner/banner.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { RegisterComponent } from './components/register/register.component';
+import { BannerComponent } from './Components/banner/banner.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { WelcomeComponent } from './Components/welcome/welcome.component';
+import { RegisterComponent } from './Components/register/register.component';
 import { LoginService } from './Services/login.service';
-import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.component';
-import { UserEditComponent } from './components/user-edit/user-edit.component';
-import { CharactersNewComponent } from './components/characters-new/characters-new.component';
-import { LoginComponent } from './Components/login/login.component';
+import { CampaignsNewComponent } from './Components/campaigns-new/campaigns-new.component';
+import { ClassesComponent } from './Components/classes/classes.component';
+import { UserEditComponent } from './Components/user-edit/user-edit.component';
+import { CharactersNewComponent } from './Components/characters-new/characters-new.component';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './Components/auth/auth.component';
-import { ReferenceClassesComponent } from './components/reference-classes/reference-classes.component';
-
-
+import { ReferenceClassesComponent } from './Components/reference-classes/reference-classes.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +31,6 @@ import { ReferenceClassesComponent } from './components/reference-classes/refere
     CampaignsNewComponent,
     UserEditComponent,
     CharactersNewComponent,
-    LoginComponent,
     AuthComponent,
     ReferenceClassesComponent,
   ],

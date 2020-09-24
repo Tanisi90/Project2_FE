@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, ActivatedRoute, ParamMap, RouterModule } from '@angular/router';
-import { RegisterComponent } from './components/register/register.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.component';
-import { CharactersNewComponent } from './components/characters-new/characters-new.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { WelcomeComponent } from './Components/welcome/welcome.component';
+import { CampaignsNewComponent } from './Components/campaigns-new/campaigns-new.component';
+import { CharactersNewComponent } from './Components/characters-new/characters-new.component';
 import { AuthComponent } from './Components/auth/auth.component';
 import { LoginComponent } from './Components/login/login.component';
 import { AuthGuard } from './auth.guard';
-import { ReferenceClassesComponent } from './components/reference-classes/reference-classes.component';
+import { ReferenceClassesComponent } from './Components/reference-classes/reference-classes.component';
 
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'characters/new', component: CharactersNewComponent }, 
   { path: 'reference/classes', component: ReferenceClassesComponent },
   { path: 'auth', component: AuthComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: NavbarComponent}
 ];
 
 @NgModule({
