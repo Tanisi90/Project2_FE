@@ -14,24 +14,24 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
-  authForm: FormGroup;
-  isSubmitted = false;
+  // authForm: FormGroup;
+  // isSubmitted = false;
 
-  ngOnInit(){
-   this.authForm = this.formBuilder.group ({
-      username: [' ', Validators.required],
-      password: [' ', Validators.required]
-    })
-  }
-  get formControls(){
-    return this.authForm.controls;
-  }
+  ngOnInit():void{
+//    this.authForm = this.formBuilder.group ({
+//       username: [' ', Validators.required],
+//       password: [' ', Validators.required]
+//     })
+//   }
+//   get formControls(){
+//     return this.authForm.controls;
+//   }
 
-  signIn(){
-    this.isSubmitted = true;
-    if(this.authForm.invalid){
-      return 'Invalid Username or Password';
-    }
-    this.authService.signIn(this.authForm.value);
+//   signIn(){
+//     this.isSubmitted = true;
+//     if(this.authForm.invalid){
+//       return 'Invalid Username or Password';
+//     }
+//     this.authService.signIn(this.authForm.value);
   }
 }
