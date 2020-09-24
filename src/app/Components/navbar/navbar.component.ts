@@ -33,21 +33,21 @@ export class NavbarComponent implements OnInit {
     }
   
     signIn(){
-
       let un =(<HTMLInputElement>document.getElementById('usernameField')).value
       let p =(<HTMLInputElement>document.getElementById('passwordField')).value
-      this.isSubmitted = true;
-      if(this.authForm.invalid){
-        return 'Invalid Username or Password';
-      }
-      this.login.signIn(un, p).subscribe((users:any) => {
+      this.login.signIn(un, p).subscribe((users :User) => {
         this.u = users;
-        console.log(this.u);
-         {
-
-        }
-
-      });
+        this.login.update(users).subscribe();
+      }
+      );
+    }
+ 
+      // console.log(un);
+      // this.isSubmitted = true;
+      // if(this.authForm.invalid){
+      //   return 'Invalid Username or Password';
+      // }
+      //   }
 
   // login() {
   //   this.loginService.loggedIn.next(true);
@@ -55,6 +55,5 @@ export class NavbarComponent implements OnInit {
   
   // logout() {
   //   this.loginService.loggedIn.next(false);
-   }
  
 }

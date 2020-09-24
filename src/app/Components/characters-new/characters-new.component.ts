@@ -16,9 +16,11 @@ export class CharactersNewComponent implements OnInit {
   intMod:number = -3;
   dexMod:number = -3;
 
-  type = "Hidden";
+    hidden:boolean;
 
-  constructor(private rs:RaceService) { }
+  constructor(private rs:RaceService) {
+    this.hidden = true;
+   }
 
   ngOnInit(): void {
     this.raceSpecs();
