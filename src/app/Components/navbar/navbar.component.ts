@@ -47,28 +47,43 @@ navToClass(index: string) {
     }
   
     signIn(){
-
       let un =(<HTMLInputElement>document.getElementById('usernameField')).value
       let p =(<HTMLInputElement>document.getElementById('passwordField')).value
-      this.isSubmitted = true;
-      if(this.authForm.invalid){
-        return 'Invalid Username or Password';
-      }
-      //this.login.signIn(un, p).subscribe((users:any) => {
-        //this.u = users;
-        console.log(this.u);
-         {
-
+      //console.log(un);
+      this.ls.signIn(un, p).subscribe((response:any) => {
+        if(response){
+          this.u = response;
+          this.loggedIn = true;
+          console.log(this.u); 
+        }
+        // this.ls.update(users).subscribe();
+        if(this.loggedIn == true){
+          // in getElementById() I want to route it to the user profile /user/profile add the profile to app-routing
+          //document.getElementById().('Welcome' + " " + un)          
+        }else{
+          this.loggedIn == false;
+          document.getElementById('unsuccessful').innerText = 'Invalid username or password. Try again!'
         }
 
+      // this.isSubmitted = true;
+      // if(this.authForm.invalid){
+      //   return 'Invalid Username or Password';
+      // }
+      // this.ls.signIn(un, p).subscribe((users:any) => {
+      // this.u = users;
+      // console.log(this.u);
+
       }
+      );
+    }
 
   // login() {
   //   this.loginService.loggedIn.next(true);
   // }
   
-  // logout() {
-  //   this.loginService.loggedIn.next(false);
-  // }
+  signOut() {
+    this.ls.signOut();
+    this.loggedIn = false;
+  }
  
 }

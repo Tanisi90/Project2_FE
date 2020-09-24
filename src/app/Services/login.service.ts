@@ -37,15 +37,15 @@ export class LoginService {
 
   signIn(un:string, p:string): Observable<User>{
     let creds:string[] = [un,p]
-    // console.log(un);
-    return this.httpClient.post<User>('http://localhost:8080/user/login', creds) as Observable<User>;
+    //console.log(un);
+    return this.httpClient.post<User>('http://localhost:8080/data/user/login', creds) as Observable<User>;
     
     //console.log(this.httpClient.post<User>('http://localhost:8080/login', creds));
     //return this.httpClient.post(`${this.AUTH_SERVER}/login`, creds) 
   }
 
   update(user): Observable<User> {
-    return this.httpClient.post<User>('http://localhost:8080/user', user) as Observable<User>;
+    return this.httpClient.post<User>('http://localhost:8080/data/user/update', user) as Observable<User>;
   }
 
   signOut() {

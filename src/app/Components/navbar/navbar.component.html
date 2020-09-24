@@ -21,8 +21,9 @@
                         <input type="checkbox" class="form-check-input" id="dropdownCheck">
                         <label class="form-check-label" for="dropdownCheck">Remember me</label>
                     </div>
-                    <button class="btn white btn-outline-info" id="signIn" (onClick)="signIn()">Sign in</button>
+                    <button class="btn white btn-outline-info" id="signIn" (click)="signIn()">Sign in</button>
                 </form>
+                <div id ='unsuccessful'></div>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" routerLink="/register">Register</a>
             </div>
@@ -32,7 +33,7 @@
                 ngbDropdownToggle>User</button>
             <div class="w-100" ngbDropdownMenu>
                 <button ngbDropdownItem>Edit Profile</button>
-                <button ngbDropdownItem (click)="logout()">Log Out</button>
+                <button ngbDropdownItem (click)="signOut()">Log Out</button>
             </div>
         </div>
     </div>
