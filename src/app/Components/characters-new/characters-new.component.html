@@ -2,11 +2,11 @@
     <img src="assets/HeaderReg.png" alt="Header">
     <div>
         <div><!--Character Name-->
-            <label for="charName"><b>Name:</b></label><br>
+            <label for="charName">Name:</label><br>
             <input type="text" id = "charName" size = "47"/>
         </div><br>
         <div><!--Character Class-->
-            <label for="charClass"><b>Class:</b> </label>
+            <label for="charClass">Class: </label>
             <select name="charClass" id="charClass" (change)="classSpecs()">
                     <option value="barbarian">Barbarian</option>
                     <option value="bard">Bard</option>
@@ -24,7 +24,7 @@
             <!--OnChoice change proficiency, Equipment, spellSlots, spell, and ? fields-->
         </div><br>
         <div><!--Character Race-->
-            <div><label for="charRace"><b>Race:</b> </label>
+            <div><label for="charRace">Race: </label>
                 <select name="charRace" id="charRace" (change)="raceSpecs()">
                     <option value="dragonborn">Dragonborn</option>
                     <option value="dwarf">Dwarf</option>
@@ -44,11 +44,11 @@
             <!--OnChoice modify speed, language, proficiencies, and ? fields-->
         </div>
         <div><!--Character Background-->
-            <div><label for="charBackground"><b>Background:</b></label></div>
+            <div><label for="charBackground">Background:</label></div>
             <div><textarea id="charBackground" rows ="4" cols="50"></textarea></div>
         </div>
         <div><!--Character Alignment-->
-            <div><label for="charAlignment"><b>Alignment:</b></label>
+            <div><label for="charAlignment">Alignment:</label>
                 <select name = "charAlignment" id="charAlignment">
                     <option value="lawful good">Lawful Good</option>
                     <option value="neutral good">Neutral Good</option>
@@ -65,17 +65,17 @@
         <div><!--Character Attributes-->
             <table style="width:90%; margin:auto">
                 <tr>
-                    <td><label for="charStr"><b>Strength:</b></label></td>
+                    <td><label for="charStr">Strength:</label></td>
                     <td><input type="number" id="charStr" min="4" style="width:50px;" value="4" (change)="getModifier('charStr')"/></td>
-                    <td><label for="charWis"><b>Wisdom:</b></label></td>
+                    <td><label for="charWis">Wisdom:</label></td>
                     <td><input type="number" id="charWis" min="4" style="width:50px;" value="4" (change)="getModifier('charWis')"/></td>
-                    <td><label for="charInt"><b>Intelligence:</b></label></td>
+                    <td><label for="charInt">Intelligence:</label></td>
                     <td><input type="number" id="charInt" min="4" style="width:50px;" value="4" (change)="getModifier('charInt')"/></td>
-                    <td><label for="charChar"><b>Charisma:</b></label></td>
+                    <td><label for="charChar">Charisma:</label></td>
                     <td><input type="number" id="charChar" min="4" style="width:50px;" value="4"(change)="getModifier('charChar')"/></td>
-                    <td><label for="charDex"><b>Dexterity:</b></label></td>
+                    <td><label for="charDex">Dexterity:</label></td>
                     <td><input type="number" id="charDex" min="4" style="width:50px;" value="4" (change)="getModifier('charDex')"/></td>
-                    <td><label for="charConst"><b>Constitution:</b></label></td>
+                    <td><label for="charConst">Constitution:</label></td>
                     <td><input type="number" id="charConst" min="4" style="width:50px;" value="4" (change)="getModifier('charConst')"/></td>
                 </tr>
                 <tr>
@@ -95,22 +95,19 @@
             </table>
         </div>
         <div><!--Character Level-->
-            <div><label for="charLevel"><b>Level:</b></label></div>
+            <div><label for="charLevel">Level:</label></div>
             <div><input type="number" min="1" value="1"></div>
         </div>
         <div><!--Character Skills-->
-            <b>Skills:</b>
-            <div id = "charSkills">
-            </div>
+            <div id = "charSkills"></div>
             <!--based on modifiers? Can't remember-->
         </div>
         <div><!--Character Speed-->
-            <b>Speed:</b>
-            <div id = "charSpeed"></div>
+            <div hidden id = "charSpeed"></div>
             <!--pull from Race?-->
         </div>
         <div><!--Character Experience-->
-            <div><label for="charExp"><b>Experience:</b></label></div>
+            <div><label for="charExp">Experience:</label></div>
             <div><input type="number" min="0" value="0"/></div>
         </div>
         <div id = "charEquips"><!--Character Equipment (Dropdowns?)-->
@@ -118,47 +115,45 @@
             <!--Pull from class-->
         </div>
         <div><!--Character Campaign-->
-            <div><label for="inCampaign"><b>In Campaign?:</b> </label>
+            <div><label for="inCampaign">In Campaign?: </label>
             <input type="checkbox" value="false"/></div>
             <div hidden id="pickCamp">
-                <div><label for="charCamp"><b>Campaign Id:</b></label></div>
+                <div><label for="charCamp">Campaign Id:</label></div>
                 <div><input type="number" min="0"/></div>
                 <!--OnChange check if campaign exists-->
             </div>
         </div>
         <div id = "charProfs"><!--Character Proficiencies-->
-            <b>Proficiencies:</b><br>
-            From Race:
-            <div id = "charProfsRace"></div><br>
-            From Class:
-            <div id = "charProfsClass"></div><br>
+            Proficiencies:
+            <div id = "charProfsRace">From Race:</div>
+            <div id = "charProfsClass">From Class:</div>
             <!--Pull from Race & Class-->
         </div>
         <div id = "charLangs"><!--Character Languages-->
-            <b>Languages:</b>
+            Languages:
             <div id = "charLangsChange"></div>
             <!--Pull Languages from Race-->
         </div>
         <div id="spellslots" hidden><!--Character SpellSlots-->
-            <b>Spell Slots:</b>
+            Spell Slots:
             <div id = "spellslotsChange"></div>
             <!--Only show if class is magical-->
         </div>
         <div id="spells" hidden><!--Character Spells-->
-            <b>Spells:</b>
+            Spells:
             <div id = "spellsChange"></div>
             <!--Only show if class is magical-->
         </div>
         <div><!--Character Currency-->
             <table style="margin:auto;">
                 <tr>
-                    <td><label for="charPl"><b>Platinum:</b></label>
+                    <td><label for="charPl">Platinum:</label>
                         <input type="number" id="charPl" min="0" value="0" style="width:60px;"/></td>
-                    <td><label for="charGl"><b>Gold:</b></label>
+                    <td><label for="charGl">Gold:</label>
                         <input type="number" id="charGl" min="0" value="0" style="width:60px;"/></td>
-                    <td><label for="charSl"><b>Silver:</b></label>
+                    <td><label for="charSl">Silver:</label>
                         <input type="number" id="charSl" min="0" value="0" style="width:60px;"/></td>
-                    <td><label for="charCp"><b>Copper:</b></label>
+                    <td><label for="charCp">Copper:</label>
                         <input type="number" id="charCp" min="0" value="0" style="width:60px;"/></td>
                 </tr>
             </table>
