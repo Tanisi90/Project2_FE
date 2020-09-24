@@ -65,32 +65,32 @@
         <div><!--Character Attributes-->
             <table style="width:90%; margin:auto">
                 <tr>
-                    <td colspan="1"><label for="charStr">Strength:</label></td>
-                    <td colspan="1"><input type="number" id="charStr" min="4" style="width:50px;" value="4" (change)="getModifier('charStr')"/></td>
-                    <td colspan="1"><label for="charWis">Wisdom:</label></td>
-                    <td colspan="1"><input type="number" id="charWis" min="4" style="width:50px;" value="4" (change)="getModifier('charWis')"/></td>
-                    <td colspan="1"><label for="charInt">Intelligence:</label></td>
-                    <td colspan="1"><input type="number" id="charInt" min="4" style="width:50px;" value="4" (change)="getModifier('charInt')"/></td>
-                    <td colspan="1"><label for="charChar">Charisma:</label></td>
-                    <td colspan="1"><input type="number" id="charChar" min="4" style="width:50px;" value="4"(change)="getModifier('charChar')"/></td>
-                    <td colspan="1"><label for="charDex">Dexterity:</label></td>
-                    <td colspan="1"><input type="number" id="charDex" min="4" style="width:50px;" value="4" (change)="getModifier('charDex')"/></td>
-                    <td colspan="1"><label for="charConst">Constitution:</label></td>
-                    <td colspan="1"><input type="number" id="charConst" min="4" style="width:50px;" value="4" (change)="getModifier('charConst')"/></td>
+                    <td><label for="charStr">Strength:</label></td>
+                    <td><input type="number" id="charStr" min="4" style="width:50px;" value="4" (change)="getModifier('charStr')"/></td>
+                    <td><label for="charWis">Wisdom:</label></td>
+                    <td><input type="number" id="charWis" min="4" style="width:50px;" value="4" (change)="getModifier('charWis')"/></td>
+                    <td><label for="charInt">Intelligence:</label></td>
+                    <td><input type="number" id="charInt" min="4" style="width:50px;" value="4" (change)="getModifier('charInt')"/></td>
+                    <td><label for="charChar">Charisma:</label></td>
+                    <td><input type="number" id="charChar" min="4" style="width:50px;" value="4"(change)="getModifier('charChar')"/></td>
+                    <td><label for="charDex">Dexterity:</label></td>
+                    <td><input type="number" id="charDex" min="4" style="width:50px;" value="4" (change)="getModifier('charDex')"/></td>
+                    <td><label for="charConst">Constitution:</label></td>
+                    <td><input type="number" id="charConst" min="4" style="width:50px;" value="4" (change)="getModifier('charConst')"/></td>
                 </tr>
                 <tr>
-                    <td colspan="1">Strength Modifier:</td>
-                    <td colspan="1">{{strMod}}</td>
-                    <td colspan="1">Wisdom Modifier: </td>
-                    <td colspan="1">{{wisMod}}</td>
-                    <td colspan="1">Intelligence Modifier: </td>
-                    <td colspan="1">{{intMod}}</td>
-                    <td colspan="1">Charisma Modifier: </td>
-                    <td colspan="1">{{chaMod}}</td>
-                    <td colspan="1">Dexterity Modifier: </td>
-                    <td colspan="1">{{dexMod}}</td>
-                    <td colspan="1">Constitution Modifier: </td>
-                    <td colspan="1">{{conMod}}</td>
+                    <td>Strength Modifier:</td>
+                    <td>{{strMod}}</td>
+                    <td>Wisdom Modifier: </td>
+                    <td>{{wisMod}}</td>
+                    <td>Intelligence Modifier: </td>
+                    <td>{{intMod}}</td>
+                    <td>Charisma Modifier: </td>
+                    <td>{{chaMod}}</td>
+                    <td>Dexterity Modifier: </td>
+                    <td>{{dexMod}}</td>
+                    <td>Constitution Modifier: </td>
+                    <td>{{conMod}}</td>
                 </tr>
             </table>
         </div>
@@ -99,16 +99,19 @@
             <div><input type="number" min="1" value="1"></div>
         </div>
         <div><!--Character Skills-->
+            <div id = "charSkills"></div>
             <!--based on modifiers? Can't remember-->
         </div>
         <div><!--Character Speed-->
+            <div hidden id = "charSpeed"></div>
             <!--pull from Race?-->
         </div>
         <div><!--Character Experience-->
             <div><label for="charExp">Experience:</label></div>
             <div><input type="number" min="0" value="0"/></div>
         </div>
-        <div><!--Character Equipment (Dropdowns?)-->
+        <div id = "charEquips"><!--Character Equipment (Dropdowns?)-->
+            <div id = "charEquipsChange"></div>
             <!--Pull from class-->
         </div>
         <div><!--Character Campaign-->
@@ -120,16 +123,25 @@
                 <!--OnChange check if campaign exists-->
             </div>
         </div>
-        <div><!--Character Proficiencies-->
+        <div id = "charProfs"><!--Character Proficiencies-->
+            Proficiencies:
+            <div id = "charProfsRace">From Race:</div>
+            <div id = "charProfsClass">From Class:</div>
             <!--Pull from Race & Class-->
         </div>
-        <div><!--Character Languages-->
+        <div id = "charLangs"><!--Character Languages-->
+            Languages:
+            <div id = "charLangsChange"></div>
             <!--Pull Languages from Race-->
         </div>
         <div id="spellslots" hidden><!--Character SpellSlots-->
+            Spell Slots:
+            <div id = "spellslotsChange"></div>
             <!--Only show if class is magical-->
         </div>
         <div id="spells" hidden><!--Character Spells-->
+            Spells:
+            <div id = "spellsChange"></div>
             <!--Only show if class is magical-->
         </div>
         <div><!--Character Currency-->
@@ -148,12 +160,12 @@
         </div><br>
         <div><!--Public?-->
             <div colspan="2">
-                <div class="btn-group btn-group-toggle" id="filterCategory" data-toggle="buttons">
-                    <label class="btn radio btn-outline-light" (click) = "type='Hidden'">
-                        <input type="radio" name="type" autocomplete="off" checked>Hidden
+                <div ngbRadioGroup class="btn-group btn-group-toggle" id="campaignsNewTypeRadio">
+                    <label class="btn radio btn-outline-light" [class.active]="hidden" ngbButtonLabel>
+                        <input ngbButton type="radio" [(ngModel)]="hidden" [value]="true">Hidden
                     </label>
-                    <label class="btn radio btn-outline-light" (click) = "type='Public'">
-                        <input type="radio" name="type" autocomplete="off" checked>Public
+                    <label class="btn radio btn-outline-light" [class.active]="!hidden" ngbButtonLabel>
+                        <input ngbButton type="radio" [(ngModel)]="hidden" [value]="false">Public
                     </label>
                 </div>
             </div>
