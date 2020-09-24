@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -17,6 +17,11 @@ import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.
 import { ClassesComponent } from './components/classes/classes.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { CharactersNewComponent } from './components/characters-new/characters-new.component';
+import { LoginComponent } from './Components/login/login.component';
+import { CommonModule } from '@angular/common';
+import { AuthComponent } from './Components/auth/auth.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,8 +33,11 @@ import { CharactersNewComponent } from './components/characters-new/characters-n
     CampaignsNewComponent,
     ClassesComponent,
     UserEditComponent,
-    CharactersNewComponent
+    CharactersNewComponent,
+    LoginComponent,
+    AuthComponent,
   ],
+
   imports: [
     BrowserModule,
     NgbModule,
@@ -37,7 +45,9 @@ import { CharactersNewComponent } from './components/characters-new/characters-n
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

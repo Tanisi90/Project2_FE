@@ -5,12 +5,18 @@ import { RegisterComponent } from './components/register/register.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.component';
 import { ClassesComponent } from './components/classes/classes.component';
+import { AuthComponent } from './Components/auth/auth.component';
+import { LoginComponent } from './Components/login/login.component';
+import { AuthGuard } from './auth.guard';
+
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'campaigns/new', component: CampaignsNewComponent },
-  { path: 'test', component: ClassesComponent }
+  { path: 'campaigns/new', component: CampaignsNewComponent}, // canActivate: [AuthGuard] 
+  { path: 'test', component: ClassesComponent },
+  { path: 'auth', component: AuthComponent},
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
