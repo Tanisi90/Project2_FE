@@ -43,7 +43,7 @@
             <div class="w-100" ngbDropdownMenu>
                 <button ngbDropdownItem *ngIf="loggedIn">My Characters</button>
                 <button ngbDropdownItem>Character List</button>
-                <button ngbDropdownItem>Make New Character</button>
+                <a routerLink="/characters/new" routerLinkActive="active" ngbDropdownItem>Make New Character</a>
             </div>
         </div>
     </div>
