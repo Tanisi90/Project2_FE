@@ -1,0 +1,177 @@
+<div style="background: rgb(0,128,128); background: linear-gradient(0deg, rgba(0,128,128,1) 0%, rgba(153,153,153,1) 100%); height: 100%; width: 90%; text-align:center; position: relative; left: 50%; transform: translate(-50%, 0px);">
+    <img src="assets/HeaderReg.png" alt="Header">
+    <div>
+        <div><!--Character Name-->
+            <label for="charName">Name:</label><br>
+            <input type="text" id = "charName" size = "47"/>
+        </div><br>
+        <div><!--Character Class-->
+            <label for="charClass">Class: </label>
+            <select name="charClass" id="charClass" (change)="classSpecs()">
+                    <option value="barbarian">Barbarian</option>
+                    <option value="bard">Bard</option>
+                    <option value="cleric">Cleric</option>
+                    <option value="druid">Druid</option>
+                    <option value="fighter">Fighter</option>
+                    <option value="monk">Monk</option>
+                    <option value="paladin">Paladin</option>
+                    <option value="ranger">Ranger</option>
+                    <option value="rogue">Rogue</option>
+                    <option value="sorcerer">Sorcerer</option>
+                    <option value="warlock">Warlock</option>
+                    <option value="wizard">Wizard</option>
+                </select>
+            <!--OnChoice change proficiency, Equipment, spellSlots, spell, and ? fields-->
+        </div><br>
+        <div><!--Character Race-->
+            <div><label for="charRace">Race: </label>
+                <select name="charRace" id="charRace" (change)="raceSpecs()">
+                    <option value="dragonborn">Dragonborn</option>
+                    <option value="dwarf">Dwarf</option>
+                    <option value="hill-dwarf">Hill Dwarf (Subrace)</option>
+                    <option value="elf">Elf</option>
+                    <option value="high-elf">High Elf (Subrace)</option>
+                    <option value="gnome">Gnome</option>
+                    <option value="rock-gnome">Rock Gnome (Subrace)</option>
+                    <option value="half-elf">Half-elf</option>
+                    <option value="half-orc">Half-orc</option>
+                    <option value="halfling">Halfling</option>
+                    <option value="lightfoot-halfling">Lightfoot Halfling (Subrace)</option>
+                    <option value="human">Human</option>
+                    <option value="tiefling">Tiefling</option>
+                </select>
+            </div><br>
+            <!--OnChoice modify speed, language, proficiencies, and ? fields-->
+        </div>
+        <div><!--Character Background-->
+            <div><label for="charBackground">Background:</label></div>
+            <div><textarea id="charBackground" rows ="4" cols="50"></textarea></div>
+        </div>
+        <div><!--Character Alignment-->
+            <div><label for="charAlignment">Alignment:</label>
+                <select name = "charAlignment" id="charAlignment">
+                    <option value="lawful good">Lawful Good</option>
+                    <option value="neutral good">Neutral Good</option>
+                    <option value="chaotic good">Chaotic Good</option>
+                    <option value="lawful neutral">Lawful Neutral</option>
+                    <option value="true neutral">True Neutral</option>
+                    <option value="chaotic neutral">Chaotic Neutral</option>
+                    <option value="lawful evil">Lawful Evil</option>
+                    <option value="neutral evil">Neutral Evil</option>
+                    <option value="chaotic evil">Chaotic Evil</option>
+                </select>
+            </div>
+        </div><br>
+        <div><!--Character Attributes-->
+            <table style="width:90%; margin:auto">
+                <tr>
+                    <td><label for="charStr">Strength:</label></td>
+                    <td><input type="number" id="charStr" min="4" style="width:50px;" value="4" (change)="getModifier('charStr')"/></td>
+                    <td><label for="charWis">Wisdom:</label></td>
+                    <td><input type="number" id="charWis" min="4" style="width:50px;" value="4" (change)="getModifier('charWis')"/></td>
+                    <td><label for="charInt">Intelligence:</label></td>
+                    <td><input type="number" id="charInt" min="4" style="width:50px;" value="4" (change)="getModifier('charInt')"/></td>
+                    <td><label for="charChar">Charisma:</label></td>
+                    <td><input type="number" id="charChar" min="4" style="width:50px;" value="4"(change)="getModifier('charChar')"/></td>
+                    <td><label for="charDex">Dexterity:</label></td>
+                    <td><input type="number" id="charDex" min="4" style="width:50px;" value="4" (change)="getModifier('charDex')"/></td>
+                    <td><label for="charConst">Constitution:</label></td>
+                    <td><input type="number" id="charConst" min="4" style="width:50px;" value="4" (change)="getModifier('charConst')"/></td>
+                </tr>
+                <tr>
+                    <td>Strength Modifier:</td>
+                    <td>{{strMod}}</td>
+                    <td>Wisdom Modifier: </td>
+                    <td>{{wisMod}}</td>
+                    <td>Intelligence Modifier: </td>
+                    <td>{{intMod}}</td>
+                    <td>Charisma Modifier: </td>
+                    <td>{{chaMod}}</td>
+                    <td>Dexterity Modifier: </td>
+                    <td>{{dexMod}}</td>
+                    <td>Constitution Modifier: </td>
+                    <td>{{conMod}}</td>
+                </tr>
+            </table>
+        </div>
+        <div><!--Character Level-->
+            <div><label for="charLevel">Level:</label></div>
+            <div><input type="number" min="1" value="1"></div>
+        </div>
+        <div><!--Character Skills-->
+            <div id = "charSkills"></div>
+            <!--based on modifiers? Can't remember-->
+        </div>
+        <div><!--Character Speed-->
+            <div hidden id = "charSpeed"></div>
+            <!--pull from Race?-->
+        </div>
+        <div><!--Character Experience-->
+            <div><label for="charExp">Experience:</label></div>
+            <div><input type="number" min="0" value="0"/></div>
+        </div>
+        <div id = "charEquips"><!--Character Equipment (Dropdowns?)-->
+            <div id = "charEquipsChange"></div>
+            <!--Pull from class-->
+        </div>
+        <div><!--Character Campaign-->
+            <div><label for="inCampaign">In Campaign?: </label>
+            <input type="checkbox" value="false"/></div>
+            <div hidden id="pickCamp">
+                <div><label for="charCamp">Campaign Id:</label></div>
+                <div><input type="number" min="0"/></div>
+                <!--OnChange check if campaign exists-->
+            </div>
+        </div>
+        <div id = "charProfs"><!--Character Proficiencies-->
+            Proficiencies:
+            <div id = "charProfsRace">From Race:</div>
+            <div id = "charProfsClass">From Class:</div>
+            <!--Pull from Race & Class-->
+        </div>
+        <div id = "charLangs"><!--Character Languages-->
+            Languages:
+            <div id = "charLangsChange"></div>
+            <!--Pull Languages from Race-->
+        </div>
+        <div id="spellslots" hidden><!--Character SpellSlots-->
+            Spell Slots:
+            <div id = "spellslotsChange"></div>
+            <!--Only show if class is magical-->
+        </div>
+        <div id="spells" hidden><!--Character Spells-->
+            Spells:
+            <div id = "spellsChange"></div>
+            <!--Only show if class is magical-->
+        </div>
+        <div><!--Character Currency-->
+            <table style="margin:auto;">
+                <tr>
+                    <td><label for="charPl">Platinum:</label>
+                        <input type="number" id="charPl" min="0" value="0" style="width:60px;"/></td>
+                    <td><label for="charGl">Gold:</label>
+                        <input type="number" id="charGl" min="0" value="0" style="width:60px;"/></td>
+                    <td><label for="charSl">Silver:</label>
+                        <input type="number" id="charSl" min="0" value="0" style="width:60px;"/></td>
+                    <td><label for="charCp">Copper:</label>
+                        <input type="number" id="charCp" min="0" value="0" style="width:60px;"/></td>
+                </tr>
+            </table>
+        </div><br>
+        <div><!--Public?-->
+            <div colspan="2">
+                <div ngbRadioGroup class="btn-group btn-group-toggle" id="campaignsNewTypeRadio">
+                    <label class="btn radio btn-outline-light" [class.active]="hidden" ngbButtonLabel>
+                        <input ngbButton type="radio" [(ngModel)]="hidden" [value]="true">Hidden
+                    </label>
+                    <label class="btn radio btn-outline-light" [class.active]="!hidden" ngbButtonLabel>
+                        <input ngbButton type="radio" [(ngModel)]="hidden" [value]="false">Public
+                    </label>
+                </div>
+            </div>
+        </div><br>
+        <div><!--Submit-->
+            <div colspan="2"><button class="btn btn-outline-light" id="registerButton">Submit</button></div><br>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+    <div style="background: rgb(0,128,128); background: linear-gradient(0deg, rgba(0,128,128,1) 0%, rgba(153,153,153,1) 100%); height: 100%; width: 90%; text-align:center; margin:auto; position: static;">
+        <img src="assets/HeaderClasses{{clss.name}}.png">
+        <table>
+            <tr>
+                <td><b>Hit Die:</b></td>
+                <td>1d{{clss.hitDie}} per {{clss.name}} level</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <b><u>Proficiencies</u></b>
+                </td>
+            </tr>
+            <tr *ngFor="let prof of clss.skillProf; index as i">
+                <td colspan="2">
+                    <b>Choose {{clss.choose[i]}} from:</b> {{prof}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <b>Items:</b> {{profList}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <b>Saving Throws: </b> {{saveList}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <b><u>Starting Equipment</u></b>
+                </td>
+            </tr>
+            <tr *ngFor="let gear of clss.equipment">
+                <td colspan="2">
+                    {{gear}}
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th><u>Level</u></th>
+                <th><u>Proficiency Bonus</u></th>
+                <th><u>Ability Bonus</u></th>
+                <th><u>Features</u></th>
+            </tr>
+            <tr class="lvl" *ngFor="let lvl of clss.levels">
+                <td class="lvl">{{lvl.level}}</td>
+                <td class="lvl">{{lvl.profBonus}}</td>
+                <td class="lvl">{{lvl.abilityBonus}}</td>
+                <td class="lvl">{{parseFeatures(lvl.features)}}</td>
+            </tr>
+        </table>
+        <table>
+            <tr *ngFor="let lvl of clss.levels">
+                <div *ngFor="let feature of lvl.features">
+                    <td class="features"><b>{{feature.name}}:</b></td>
+                    <td class="features"><div *ngFor="let line of feature.desc">
+                        {{line}} <br>
+                    </div></td>
+                </div>
+            </tr>
+        </table>
+        <table class="spells">
+            <tr *ngFor="let spell of clss.spells">
+                <td>
+                    {{spell.name}}
+                </td>
+            </tr>
+        </table>
+    </div>

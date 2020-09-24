@@ -4,17 +4,19 @@ import { Routes, ActivatedRoute, ParamMap, RouterModule } from '@angular/router'
 import { RegisterComponent } from './Components/register/register.component';
 import { WelcomeComponent } from './Components/welcome/welcome.component';
 import { CampaignsNewComponent } from './Components/campaigns-new/campaigns-new.component';
-import { ClassesComponent } from './Components/classes/classes.component';
+import { CharactersNewComponent } from './Components/characters-new/characters-new.component';
 import { AuthComponent } from './Components/auth/auth.component';
-import { NavbarComponent } from './Components/navbar/navbar.component';
-//import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './Components/login/login.component';
+import { AuthGuard } from './auth.guard';
+import { ReferenceClassesComponent } from './Components/reference-classes/reference-classes.component';
 
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'campaigns/new', component: CampaignsNewComponent}, // canActivate: [AuthGuard] 
-  { path: 'test', component: ClassesComponent },
+  { path: 'campaigns/new', component: CampaignsNewComponent}, // canActivate: [AuthGuard]
+  { path: 'characters/new', component: CharactersNewComponent }, 
+  { path: 'reference/classes', component: ReferenceClassesComponent },
   { path: 'auth', component: AuthComponent},
   { path: 'login', component: NavbarComponent}
 ];

@@ -19,8 +19,7 @@ import { UserEditComponent } from './Components/user-edit/user-edit.component';
 import { CharactersNewComponent } from './Components/characters-new/characters-new.component';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './Components/auth/auth.component';
-
-
+import { ReferenceClassesComponent } from './Components/reference-classes/reference-classes.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +29,10 @@ import { AuthComponent } from './Components/auth/auth.component';
     WelcomeComponent,
     RegisterComponent,
     CampaignsNewComponent,
-    ClassesComponent,
     UserEditComponent,
     CharactersNewComponent,
-    AuthComponent
+    AuthComponent,
+    ReferenceClassesComponent,
   ],
 
   imports: [
