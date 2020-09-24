@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/Services/login.service';
+import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
+import { User } from 'src/app/models/user';
+
+// import { User } from  '../user';
 
 @Component({
   selector: 'app-navbar',
@@ -10,20 +14,47 @@ import { LoginService } from 'src/app/Services/login.service';
 export class NavbarComponent implements OnInit {
   loggedIn : boolean = false;
 
-  constructor(private loginService: LoginService) {
-    this.loginService.loggedIn.subscribe( value => {
-        this.loggedIn = value;
-    });
-}
-
-  ngOnInit(): void {
+  u: User;
+  constructor(private login: LoginService, private formBuilder: FormBuilder ) {
   }
-
-  login() {
-    this.loginService.loggedIn.next(true);
-  }
+    // this.loginService.loggedIn.subscribe( value => {
+    //     this.loggedIn = value;
+    authForm: FormGroup;
+    isSubmitted = false;
   
-  logout() {
-    this.loginService.loggedIn.next(false);
-  }
+    ngOnInit(){
+     this.authForm = this.formBuilder.group ({
+        username: [' ', Validators.required],
+        password: [' ', Validators.required]
+      })
+    }
+    get formControls(){
+      return this.authForm.controls;
+    }
+  
+    signIn(){
+
+      let un =(<HTMLInputElement>document.getElementById('usernameField')).value
+      let p =(<HTMLInputElement>document.getElementById('passwordField')).value
+      this.isSubmitted = true;
+      if(this.authForm.invalid){
+        return 'Invalid Username or Password';
+      }
+      this.login.signIn(un, p).subscribe((users:any) => {
+        this.u = users;
+        console.log(this.u);
+         {
+
+        }
+
+      });
+
+  // login() {
+  //   this.loginService.loggedIn.next(true);
+  // }
+  
+  // logout() {
+  //   this.loginService.loggedIn.next(false);
+   }
+ 
 }
