@@ -13,50 +13,6 @@ export class RaceService {
 
   constructor(private http:HttpClient) { }
 
-  getLangs(index:string):any[]{
-    var lang:any[] = [];
-    this.index = index;
-    var subrace:boolean = false;
-    var subInd:string = "";
-    switch(index){
-      case "high-elf":
-        subInd = index;
-        index = "elf";
-        subrace = true;
-        break;
-      case "lightfoot-halfling":
-        subInd = index;
-        index = "halfling";
-        subrace = true;
-        break;
-      case "rock-gnome":
-        subInd = index;
-        index = "gnome";
-        subrace = true;
-        break;
-      case "hill-dwarf":
-        subInd = index;
-        index = "dwarf";
-        subrace = true;
-        break; 
-      default:
-        break;
-    }
-    this.getBase(index).subscribe(
-      (response:any) => {
-        this.parseLangs(lang,response);
-      }
-    );
-    if(subrace == true){
-      this.getSub(subInd).subscribe(
-        (response:any) => {
-          this.parseLangs(lang,response);
-        }
-      );
-    }
-    return lang;
-  }
-
    getBase(index:string):Observable<any>{
     return this.http.get(this.url + "races/"+  index + "/");
   }

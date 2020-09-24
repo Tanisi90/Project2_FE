@@ -3,8 +3,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 // import { Users } from '../auth/user';
-import { tap } from 'rxjs/operators';
-import { Jwtresp } from '../auth/jwtresp';
+// import { tap } from 'rxjs/operators';
+// import { Jwtresp } from '../auth/jwtresp';
 //import { NavBar } from './Component/navbar/navbar.Component';
 
 @Injectable({
@@ -22,17 +22,17 @@ export class LoginService {
     return localStorage.getItem('ACCESS_TOKEN') !== null;
   }
 
-  register(user: User): Observable<Jwtresp> {
-    return this.httpClient.post<Jwtresp>('http://localhost:8080/signup', user).pipe(
-      tap((res: Jwtresp ) => {
+  register(user: User): void {
+    // return this.httpClient.post<Jwtresp>('http://localhost:8080/signup', user).pipe(
+    //   tap((res: Jwtresp ) => {
 
-        if (res.users) {
-          localStorage.set("ACCESS_TOKEN", res.users.access_token);
+    //     if (res.users) {
+    //       localStorage.set("ACCESS_TOKEN", res.users.access_token);
       
-          this.authUser.next(true);
-        }
-      })
-    );   
+    //       this.authUser.next(true);
+    //     }
+    //   })
+    // );   
   }
 
   signIn(un:string, p:string): Observable<User>{

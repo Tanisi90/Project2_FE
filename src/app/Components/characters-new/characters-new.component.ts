@@ -16,7 +16,7 @@ export class CharactersNewComponent implements OnInit {
   intMod:number = -3;
   dexMod:number = -3;
 
-  type = "Hidden";
+  hidden:boolean;
 
   constructor(private rs:RaceService) { }
 
@@ -62,6 +62,8 @@ export class CharactersNewComponent implements OnInit {
       }
       this.rs.getBase(index).subscribe(
         (response:any) => {
+          this.getSpeed(response);
+          this.getProfs(response);
           this.rs.parseLangs(lang,response);
           
           if(subrace == true){
@@ -78,6 +80,51 @@ export class CharactersNewComponent implements OnInit {
       );
   }
 
+  getSpeed(response:any){
+    var speed:HTMLElement = document.getElementById("charSpeed");
+    speed.innerText = response["speed"];
+  }
+
+  getProfs(response:any){
+    var prfs:HTMLElement = document.getElementById("charProfsRace");
+    prfs.innerText="";
+    var profAr:any[] = response["starting_proficiencies"];
+    for(var p of profAr){
+      prfs.innerHTML += "<div class = 'setProfs'>" + p["index"] + "</div>";
+    }
+    var opt:any[] = response["starting_proficiency_options"];
+    if(opt != null){
+      if(opt["choose"] != null){
+        for(var i = 0; i < opt["choose"]; i++){
+          var child = document.createElement("select");
+          child.setAttribute("id","getProf"+(i+1));
+          prfs.appendChild(child);
+          for(var pchoic of opt["from"]){
+            var option = document.createElement("option");
+            option.value = pchoic["index"];
+            option.innerText = pchoic["index"];
+            child.appendChild(option);
+          }
+        }
+      }
+      else{
+        for(var inOpt of opt){
+          for(var i = 0; i < inOpt["choose"]; i++){
+            var child = document.createElement("select");
+            child.setAttribute("id","getProf"+(i+1));
+            prfs.appendChild(child);
+            for(var pchoic of opt["from"]){
+              var option = document.createElement("option");
+              option.value = pchoic["index"];
+              option.innerText = pchoic["index"];
+              child.appendChild(option);
+            }
+          }
+        }
+      }
+    }
+  }
+
   changeLangs(lang:any[]){
     var langs:HTMLElement = document.getElementById("charLangsChange");
     langs.innerHTML = "";
@@ -86,7 +133,7 @@ export class CharactersNewComponent implements OnInit {
     for(let l of lang){
       if(choice == false){
         if(typeof(l) == "string"){
-          langs.innerHTML += l + "<br>";
+          langs.innerHTML += "<div class = 'setLangs'>" +  l + "</div>";
         }
         else if(typeof(l) == "number"){
           for(var i = 0; i < l; i++){
