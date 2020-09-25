@@ -11,7 +11,6 @@ import { Subrace } from '../models/subrace';
 export class RaceService {
   private url: string = "https://www.dnd5eapi.co";
   private index: string;
-  private interim:string;
 
   constructor(private http:HttpClient) { }
 

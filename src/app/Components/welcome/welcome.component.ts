@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { RaceService } from 'src/app/Services/race.service';
+import { SpellService } from 'src/app/Services/spell.service';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.css'],
-  animations: [trigger('fade', [
-    state('in', style({opacity: 1})), transition(':enter', [
-      style({opacity: 0}), animate(1000)
-    ]),
-    transition(':leave', animate(1000, style({opacity: 0})))
-  ])
-]
+  styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(private rs: RaceService) { }
+  constructor(private ss: SpellService) { }
 
   ngOnInit(): void {
+  }
+
+  test() {
+    this.ss.setIndex("acid-arrow");
+    this.ss.parseSpell(this.ss.getSpell());
   }
 }
