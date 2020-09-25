@@ -65,15 +65,15 @@
                 <div ngbDropdown placement="left-top" class="dropdown dropleft">
                     <button class="btn drpdwn btn-block" id="dropdownRaces" ngbDropdownToggle>Races</button>
                     <div class="w-100" ngbDropdownMenu>
-                        <a routerLink="/reference/races" routerLinkActive="active" ngbDropdownItem>Dragonborn</a>
-                        <button ngbDropdownItem>Dwarf</button>
-                        <button ngbDropdownItem>Elf</button>
-                        <button ngbDropdownItem>Gnome</button>
-                        <button ngbDropdownItem>Half-Elf</button>
-                        <button ngbDropdownItem>Half-Orc</button>
-                        <button ngbDropdownItem>Halfling</button>
-                        <button ngbDropdownItem>Human</button>
-                        <button ngbDropdownItem>Tiefling</button>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('dragonborn')" ngbDropdownItem>Dragonborn</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('dwarf')" ngbDropdownItem>Dwarf</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('elf')" ngbDropdownItem>Elf</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('gnome')" ngbDropdownItem>Gnome</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('half-elf')" ngbDropdownItem>Half-Elf</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('half-orc')" ngbDropdownItem>Half-Orc</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('halfling')" ngbDropdownItem>Halfling</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('human')" ngbDropdownItem>Human</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('tiefling')" ngbDropdownItem>Tiefling</a>
                     </div>
                 </div>
                 <div ngbDropdown placement="left-top" class="dropdown dropleft">

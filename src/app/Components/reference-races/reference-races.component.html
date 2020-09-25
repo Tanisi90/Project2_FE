@@ -1,3 +1,141 @@
 <div style="background: rgb(0,128,128); background: linear-gradient(0deg, rgba(0,128,128,1) 0%, rgba(153,153,153,1) 100%); height: 100%; width: 90%; text-align:center; margin:auto; position: static;">
-
+    <img src="assets/HeaderRaces{{race.name}}.png">
+    <table>
+        <tr>
+            <td>
+                <b>Ability Score Increase(s):</b>
+            </td>
+        </tr>
+        <tr *ngFor="let bonus of race.bonus; index as i">
+            <td>
+                Your {{race.ability[i]}} score increases by {{bonus}}.
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <b>Age:</b>
+            </td>
+            <td>
+                {{race.age}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Alignment:</b>
+            </td>
+            <td>
+                {{race.alignment}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Size:</b>
+            </td>
+            <td>
+                {{race.size}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Languages:</b>
+            </td>
+            <td>
+                {{race.languages}}
+            </td>
+        </tr>
+    </table>
+        <br>
+    <table *ngIf="hasArray(race.proficiencies)">
+        <tr>
+            <td colspan="2">
+                <b><u>Proficiencies</u></b>
+            </td>
+        </tr>
+        <tr *ngFor="let prof of race.proficiencies">
+            <td colspan="2">
+                {{prof}}
+            </td>
+        </tr>
+        <br>
+    </table>
+    <table>
+        <tr *ngFor="let feature of race.features">
+            <td class="features">
+                <b>{{feature.name}}:</b></td>
+            <td class="features">
+                <p *ngFor="let line of feature.desc">
+                    {{line}} <br>
+                </p></td>
+        </tr>
+    </table>
+    <div *ngIf="hasArray(race.subraces)">
+        <table>
+            <tr>
+                <td colspan="2">
+                    <b><u>Subraces:</u></b>
+                </td>
+            </tr>
+        </table>
+        <div *ngFor="let sr of race.subraces">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <b>{{sr.name}}</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        {{sr.desc}}
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>
+                        <b>Ability Score Increase(s):</b>
+                    </td>
+                </tr>
+                <tr *ngFor="let bonus of sr.bonus; index as i">
+                    <td>
+                        Your {{sr.ability[i]}} score increases by {{sr.bonus}}.
+                    </td>
+                </tr>
+                <tr *ngIf="sr.language != null">
+                    <br>
+                    <td>
+                        <b>Language:</b>
+                    </td>
+                    <td>
+                        {{sr.language}}
+                    </td>
+                </tr>
+                <br>
+            </table>
+            <table *ngIf="hasArray(sr.proficiencies)">
+                <tr>
+                    <td colspan="2">
+                        <b><u>Proficiencies</u></b>
+                    </td>
+                </tr>
+                <tr *ngFor="let prof of sr.proficiencies">
+                    <td colspan="2">
+                        {{prof}}
+                    </td>
+                </tr>
+                <br>
+            </table>
+            <table>
+                <tr *ngFor="let feature of sr.traits">
+                    <td class="features">
+                        <b>{{feature.name}}:</b></td>
+                    <td class="features">
+                        <p *ngFor="let line of feature.desc">
+                            {{line}} <br>
+                        </p></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

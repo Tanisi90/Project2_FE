@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Race } from 'src/app/models/race';
 import { RaceService } from 'src/app/Services/race.service';
+import { Feature } from 'src/app/models/feature';
 
 @Component({
   selector: 'app-reference-races',
@@ -11,11 +13,34 @@ export class ReferenceRacesComponent implements OnInit {
   public race: Race;
 
   constructor(private rs: RaceService) {
-    this.rs.getRace("Dragonborn").subscribe(
+    this.rs.getRace().subscribe(
       (response: any) => {
-        console.log("I got it!");
         this.race = this.rs.parseRace(response);
       });
+  }
+
+  parseFeatures(list: Feature[]): string {
+    let str: string = "";
+    for(let i = 0; i < list.length; i++) {
+      if(i == 0) {
+        str += list[i].name;
+      } else {
+        str += "; " + list[i].name;
+      }
+    }
+    return str;
+  }
+
+  hasArray(array: any[]): boolean {
+    if(!Array.isArray(array) || !array.length) {
+      return false;
+    } else {
+        if(typeof array !== 'undefined' && array.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
   ngOnInit(): void {

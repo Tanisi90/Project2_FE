@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,11 +18,9 @@ import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { CharactersNewComponent } from './components/characters-new/characters-new.component';
 import { LoginComponent } from './Components/login/login.component';
-import { CommonModule } from '@angular/common';
 import { AuthComponent } from './Components/auth/auth.component';
 import { ReferenceClassesComponent } from './components/reference-classes/reference-classes.component';
 import { ReferenceRacesComponent } from './components/reference-races/reference-races.component';
-
 
 
 @NgModule({
