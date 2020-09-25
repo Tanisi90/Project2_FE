@@ -11,6 +11,6 @@ export class CharacterService {
   constructor(private http :HttpClient) { }
 
   saveChar(c:Character ):Observable<any>{
-    return this.http.post(this.url + "/character/new",c);
+    return this.http.post(this.url + "character/new",c);
   }
 }

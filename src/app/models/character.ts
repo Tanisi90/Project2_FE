@@ -1,9 +1,10 @@
 import {Class} from './class';
-import {Race} from './race';
 import {Feature} from './feature';
 import {User} from './user';
 import {Attribute} from './attribute';
 import {Campaign} from './campaign';
+import {Currency} from './currency';
+import { Hitpoints } from './hitpoints';
 
 export class Character {
     public char_id:number;
@@ -27,17 +28,17 @@ export class Character {
 	public inspiration:boolean;
 	public visibility:boolean;
 	public attributes:Attribute[];
-	public skills:string[];
-	public spells:string[];
-	public equipment:string[];
+	public skills:string;
+	public spells:string;
+	public equipment:string;
 	public languages:string[];
 	public proficiencies:string[];
 	public class1:Class;
 	public player:User;
 	public campaign:Campaign;
-	public race:Race;
-	public currency:number[];
-	public hitpoints:number;
+	public race:string;
+	public currency:Currency;
+	public hitpoints:Hitpoints;
     public char_feature:Feature[];
     
     public Character(
@@ -51,16 +52,16 @@ export class Character {
         currentFifth:number, currentSixth:number, currentSeventh:number,
         currentEighth:number, currentNinth:number, inspiration:boolean,
         visibility:boolean, attributes:Attribute[],
-        skills:string[], spells:string[],
-        equipment:string[],
+        skills:string, spells:string,
+        equipment:string,
         languages:string[],
         proficiencies:string[],
         class1:Class,
         player:User,
         campaign:Campaign,
-        race:Race,
-        currency:number[],
-        hitpoints:number,
+        race:string,
+        currency:Currency,
+        hitpoints:Hitpoints,
         char_feature:Feature[]) {
     
         this.char_id = char_id;

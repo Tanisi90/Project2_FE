@@ -9,7 +9,10 @@ import {CharacterService} from 'src/app/Services/character.service';
 import {Race} from 'src/app/models/race';
 import {Attribute} from 'src/app/models/attribute';
 import {Feature} from 'src/app/models/feature';
-import {Campaign} from 'scr/app/models/campaign';
+import {Campaign} from 'src/app/models/campaign';
+import {ProfileService} from 'src/app/Services/profile.service';
+import { Currency } from 'src/app/models/currency';
+import { Hitpoints } from 'src/app/models/hitpoints';
 
 
 @Component({
@@ -31,7 +34,8 @@ export class CharactersNewComponent implements OnInit {
 
   hidden:boolean;
 
-  constructor(private rs:RaceService, private cs:ClassService, private router:Router, private charServ : CharacterService) {
+  constructor(private rs:RaceService, private cs:ClassService, private router:Router, private charServ : CharacterService,
+    private ps:ProfileService) {
     this.hidden = true;
    }
 
@@ -264,12 +268,12 @@ export class CharactersNewComponent implements OnInit {
   }
 
   submit(): void{
-    let str:Attribute;
-    let wis:Attribute;
-    let int:Attribute;
-    let chr:Attribute;
-    let dex:Attribute;
-    let con:Attribute;
+    let str:Attribute = new Attribute();
+    let wis:Attribute = new Attribute();
+    let int:Attribute = new Attribute();
+    let chr:Attribute = new Attribute();
+    let dex:Attribute = new Attribute();
+    let con:Attribute = new Attribute();
     str.attrib_name = "Strength";
     str.value = (<HTMLInputElement>document.getElementById("charStr")).value as unknown as number;
     str.modifier = this.strMod;
@@ -290,13 +294,13 @@ export class CharactersNewComponent implements OnInit {
     dex.modifier = this.dexMod;
     dex.save = 0;
     con.attrib_name = "Constitution";
-    con.value = (<HTMLInputElement>document.getElementById("charCon")).value as unknown as number;
+    con.value = (<HTMLInputElement>document.getElementById("charConst")).value as unknown as number;
     con.modifier = this.conMod;
     con.save = 0;
     let atts:Attribute[] = [str,wis,int,chr,dex,con];
     this.cs.setIndex((<HTMLInputElement>document.getElementById("charClass")).value)
     
-    let char:Character;
+    let char:Character = new Character();
       char.char_name = (<HTMLInputElement>document.getElementById("charName")).value;
       char.alignment = (<HTMLInputElement>document.getElementById("charAlignment")).value;
       char.char_background = (<HTMLInputElement>document.getElementById("charBackground")).value;
@@ -317,23 +321,43 @@ export class CharactersNewComponent implements OnInit {
       char.inspiration = false;//Insp
       char.visibility = this.hidden;
       char.attributes = atts;
-      char.skills = this.getSkills();
-      char.spells = this.getSpells();
-      char.equipment = this.getEquip();
+      char.skills = this.getSkills().join("/n");
+      if(this.clss.spells != null){
+        char.spells = this.getSpells().join("/n");
+      }else{
+        char.spells = "";
+      }
+      char.equipment = this.getEquip().join("/n");
       char.languages = this.getLangs();
       char.proficiencies = this.getProfs();
       char.class1 = this.clss;
-      char.player = this.getUser(); 
+      this.ps.getUser().subscribe(
+        (response:any)=>{
+          char.player = response;
+        }
+      ); 
       char.campaign = null;
-      char.race = this.rce;
-      char.currency = [
-        <number><unknown>(<HTMLInputElement>document.getElementById("charPl")).value,
-        <number><unknown>(<HTMLInputElement>document.getElementById("charGl")).value,
-        <number><unknown>(<HTMLInputElement>document.getElementById("charSl")).value,
-        <number><unknown>(<HTMLInputElement>document.getElementById("charCp")).value,
-      ];
-      char.hitpoints = 20,
-      char.char_feature = this.getFeature()
+      char.race = (<HTMLInputElement>document.getElementById("charRace")).value;
+      char.currency = new Currency();
+      char.currency.platinum = 
+        <number><unknown>(<HTMLInputElement>document.getElementById("charPl")).value;
+      char.currency.gold = 
+        <number><unknown>(<HTMLInputElement>document.getElementById("charGl")).value;
+      char.currency.silver = 
+        <number><unknown>(<HTMLInputElement>document.getElementById("charSl")).value;
+      char.currency.copper = 
+        <number><unknown>(<HTMLInputElement>document.getElementById("charCp")).value;
+      char.hitpoints = new Hitpoints();
+      char.hitpoints.currentHP = 20;
+      char.hitpoints.maxHP = 20;
+      char.hitpoints.tempHP = 20;
+      char.hitpoints.currentHD = 20;
+      char.hitpoints.maxHD = 20;
+      char.hitpoints.deathSuccesses = 0;
+      char.hitpoints.deathFailures = 0;
+      char.char_feature = this.getFeature();
+
+      console.log(char);
 
     this.charServ.saveChar(char).subscribe(
         (response:any)=>{
@@ -388,18 +412,10 @@ export class CharactersNewComponent implements OnInit {
     return langs;
   }
 
-  getUser():User{
-    
-  }
-
   getFeature():Feature[]{
     //Dummy features bc time
-    var f:Feature;
-    f.name = "dummy1";
-    f.desc = ["Temp Data","To be replaced"];
-    var f2:Feature;
-    f2.name = "dummy2";
-    f.desc = ["Temporary", "Leaving soon"]
+    var f:Feature = new Feature("dummy1",["Temp Data","To be replaced"]);
+    var f2:Feature = new Feature("dummy2",["Temporary", "Leaving soon"]);
     return [f, f2]
   }
     
