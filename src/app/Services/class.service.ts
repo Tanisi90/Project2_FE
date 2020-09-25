@@ -208,6 +208,10 @@ export class ClassService {
     return levels;
   }
 
+  getSpell(url:string):Observable<any>{
+    return this.http.get(this.url + url);
+  }
+
   parseSpells(): Link[] { // Unimplemented
     let list: Link[] = [];
     this.http.get(this.url + "/api/classes/" + this.index + "/spells").subscribe((r: any) => {

@@ -70,15 +70,15 @@ export class RaceService {
   parseLangs(lang:any[],r:any){
     var check:any[] = lang;
     for(var setLang of r["languages"]){
-      if(!lang.includes(setLang["index"])){
-        lang.push(setLang["index"]);
+      if(!lang.includes(setLang["name"])){
+        lang.push(setLang["name"]);
       }
     }
     if(r["language_options"] != null){
       lang.push(r["language_options"]["choose"]);
       for(var chLang of r["language_options"]["from"]){
-        if(!lang.includes(chLang["index"])){
-          lang.push(chLang["index"]);
+        if(!lang.includes(chLang["name"])){
+          lang.push(chLang["name"]);
         }
       }
     }

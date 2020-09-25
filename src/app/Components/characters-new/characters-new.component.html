@@ -96,7 +96,7 @@
         </div>
         <div><!--Character Level-->
             <div><label for="charLevel"><b>Level:</b></label></div>
-            <div><input type="number" min="1" value="1"></div>
+            <div><input (change)="checkSpells()" id = "charLevel" type="number" min="1" value="1"></div>
         </div>
         <div><!--Character Skills-->
             <b>Skills:</b>
@@ -111,7 +111,7 @@
         </div>
         <div><!--Character Experience-->
             <div><label for="charExp"><b>Experience:</b></label></div>
-            <div><input type="number" min="0" value="0"/></div>
+            <div><input id = "charExp" type="number" min="0" value="0"/></div>
         </div>
         <div id = "charEquips"><!--Character Equipment (Dropdowns?)-->
             <div id = "charEquipsChange"></div>
@@ -147,7 +147,14 @@
         </div>
         <div id="spells" hidden><!--Character Spells-->
             <b>Spells:</b>
-            <div id = "spellsChange"></div>
+            <div id = "spellsChange" (change)="checkSpells()">
+                <table style="width:90%; margin:auto">
+                <tr *ngFor="let spell of clss.spells" id = {{spell.name}}>
+                    <td>
+                        {{spell.name}}
+                    </td>
+                </tr>
+            </table></div>
             <!--Only show if class is magical-->
         </div>
         <div><!--Character Currency-->

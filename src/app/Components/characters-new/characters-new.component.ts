@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {RaceService} from 'src/app/Services/race.service';
 import {ClassService} from 'src/app/Services/class.service';
 import {Class} from 'src/app/models/class';
+import { Router } from '@angular/router';
+import {timer} from 'rxjs';
+import { HtmlAstPath } from '@angular/compiler';
 
 @Component({
   selector: 'app-characters-new',
@@ -21,13 +24,13 @@ export class CharactersNewComponent implements OnInit {
 
   hidden:boolean;
 
-  constructor(private rs:RaceService, private cs:ClassService) {
+  constructor(private rs:RaceService, private cs:ClassService, private router:Router) {
     this.hidden = true;
    }
 
   ngOnInit(): void {
-    this.raceSpecs();
     this.classSpecs();
+    this.raceSpecs();
   }
 
   classSpecs(): void{
@@ -37,28 +40,42 @@ export class CharactersNewComponent implements OnInit {
       (response:any)=>{
         this.clss = this.cs.parseClass(response);
         this.classProfs(response);
-        if(response["spells"] != null){
-          this.changeSpells();
+        if(response["spells"]!=null){
+          document.getElementById("spells").hidden = false;
+        }
+        else{
+          document.getElementById("spells").hidden = true;
         }
       });
+    timer(2000).subscribe(done => this.checkSpells());
   }
 
-  changeSpells(){
-    var spells:HTMLElement = <HTMLElement>document.getElementById("spells")
-    spells.hidden = false;
-    console.log("??");
-    for(var l in this.clss.spells){
-      console.log(l);
+  checkSpells(){
+    console.log("called");
+    for(var i of this.clss.spells){
+       this.isLevel(i["name"],i["url"]);
     }
-    
   }
 
+  isLevel(name:string, url:string){
+    this.cs.getSpell(url).subscribe(
+      (response:any)=>{
+        if(response["level"] <= (<HTMLInputElement>document.getElementById("charLevel")).value){
+          console.log(response["level"] + " is lower than " + (<HTMLInputElement>document.getElementById("charLevel")).value);
+          document.getElementById(name).hidden = false;
+        }
+        else{
+          document.getElementById(name).hidden = true;
+        }
+      }
+    );
+  }
   classProfs(response:any){
       var prfs:HTMLElement = document.getElementById("charProfsClass");
       prfs.innerText="";
       var profAr:any[] = response["proficiencies"];
       for(var p of profAr){
-        prfs.innerHTML += "<div class = 'setProfs'>" + p["index"] + "</div>";
+        prfs.innerHTML += "<div class = 'setProfs'>" + p["name"] + "</div>";
       }
       var opt:any[] = response["proficiency_options"];
       if(opt != null){
@@ -70,7 +87,7 @@ export class CharactersNewComponent implements OnInit {
             for(var pchoic of opt["from"]){
               var option = document.createElement("option");
               option.value = pchoic["index"];
-              option.innerText = pchoic["index"];
+              option.innerText = pchoic["name"];
               child.appendChild(option);
             }
           }
@@ -84,7 +101,7 @@ export class CharactersNewComponent implements OnInit {
               for(var pchoic of opt["from"]){
                 var option = document.createElement("option");
                 option.value = pchoic["index"];
-                option.innerText = pchoic["index"];
+                option.innerText = pchoic["name"];
                 child.appendChild(option);
               }
             }
@@ -154,7 +171,7 @@ export class CharactersNewComponent implements OnInit {
     prfs.innerText="";
     var profAr:any[] = response["starting_proficiencies"];
     for(var p of profAr){
-      prfs.innerHTML += "<div class = 'setProfs'>" + p["index"] + "</div>";
+      prfs.innerHTML += "<div class = 'setProfs'>" + p["name"] + "</div>";
     }
     var opt:any[] = response["starting_proficiency_options"];
     if(opt != null){
@@ -166,7 +183,7 @@ export class CharactersNewComponent implements OnInit {
           for(var pchoic of opt["from"]){
             var option = document.createElement("option");
             option.value = pchoic["index"];
-            option.innerText = pchoic["index"];
+            option.innerText = pchoic["name"];
             child.appendChild(option);
           }
         }
@@ -180,7 +197,7 @@ export class CharactersNewComponent implements OnInit {
             for(var pchoic of opt["from"]){
               var option = document.createElement("option");
               option.value = pchoic["index"];
-              option.innerText = pchoic["index"];
+              option.innerText = pchoic["name"];
               child.appendChild(option);
             }
           }
