@@ -19,7 +19,11 @@
                 <td><input type="text" id="lastNameField" size="25"/></td>
             </tr>
             <tr>
-                <td colspan="2"><button class="btn btn-outline-light" id="registerButton" (click)="register()">Register</button></td>
+                <td><label for="emailField"><b>Email:</b></label></td>
+                <td><input type="email" id="emailField" size="25"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="btn btn-outline-light" id="registerButton" (click)="signUp()">Register</button></td>
             </tr>
         </div>
     </table>

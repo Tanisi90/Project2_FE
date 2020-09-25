@@ -8,16 +8,16 @@ export class AuthService {
 
   constructor() { }
 
-public signIn(userData: User){
-  localStorage.setItem('ACCESS_TOKEN', "access_token");
-}
+// public signIn(userData: User){
+//   localStorage.setItem('ACCESS_TOKEN', "access_token");
+// }
 
-public isLoggedIn(){
-  return localStorage.getItem('ACCESS_TOKEN') !== null;
-}
+// public isLoggedIn(){
+//   return localStorage.getItem('ACCESS_TOKEN') !== null;
+// }
 
-public logout(){
-  localStorage.removeItem('ACCESS_TOKEN');
-  }
+// public logout(){
+//   localStorage.removeItem('ACCESS_TOKEN');
+//   }
 }
 

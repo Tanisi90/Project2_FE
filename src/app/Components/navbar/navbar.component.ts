@@ -85,5 +85,7 @@ navToClass(index: string) {
     this.ls.signOut();
     this.loggedIn = false;
   }
+
+  
  
 }
