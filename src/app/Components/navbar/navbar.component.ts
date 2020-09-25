@@ -4,6 +4,7 @@ import { LoginService } from 'src/app/Services/login.service';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { User } from 'src/app/models/user';
 import { ClassService } from 'src/app/Services/class.service';
+import { RaceService } from 'src/app/Services/race.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,7 @@ export class NavbarComponent implements OnInit {
   loggedIn : boolean = false;
 
   u: User;
-  constructor(private ls: LoginService, private cs: ClassService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private ls: LoginService, private cs: ClassService, private rs: RaceService, private formBuilder: FormBuilder, private router: Router) {
     //this.ls.loggedIn.subscribe( value => {
       //this.loggedIn = value;
   //});
@@ -28,6 +29,17 @@ navToClass(index: string) {
   } else {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigateByUrl('/reference/classes');
+  }); 
+  }
+}
+
+navToRace(index: string) {
+  this.rs.setIndex(index);
+  if(this.router.url != '/reference/races') {
+    this.router.navigateByUrl('/reference/races');
+  } else {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/reference/races');
   }); 
   }
 }
