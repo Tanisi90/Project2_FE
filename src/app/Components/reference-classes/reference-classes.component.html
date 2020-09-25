@@ -2,8 +2,7 @@
         <img src="assets/HeaderClasses{{clss.name}}.png">
         <table>
             <tr>
-                <td><b>Hit Die:</b></td>
-                <td>1d{{clss.hitDie}} per {{clss.name}} level</td>
+                <td><b>Hit Die:</b> 1d{{clss.hitDie}} per {{clss.name}} level</td>
             </tr>
             <br>
             <tr>
@@ -54,22 +53,35 @@
             </tr>
         </table>
         <br>
-        <table>
-            <tr *ngFor="let lvl of clss.levels">
-                <div *ngFor="let feature of lvl.features">
-                    <td class="features"><b>{{feature.name}}:</b></td>
-                    <td class="features"><div *ngFor="let line of feature.desc">
-                        {{line}} <br>
-                    </div></td>
-                </div>
-            </tr>
-        </table>
+        <b><u>Features</u></b>
         <br>
-        <table class="spells">
-            <tr *ngFor="let spell of clss.spells">
-                <td>
-                    {{spell.name}}
-                </td>
-            </tr>
+        <br>
+        <table class="table table-striped" style="color: #FFFFFF">
+            <ng-container *ngFor="let lvl of clss.levels">
+                <tr *ngFor="let feature of lvl.features">
+                    <td><b>{{feature.name}}:</b></td>
+                    <td><ng-container *ngFor="let line of feature.desc">
+                        {{line}} <br>
+                    </ng-container></td>
+                </tr>
+            </ng-container>
         </table>
+        <ng-container *ngIf="clss.spells != null">
+            <b><u>Spells</u></b>
+            <br>
+            <br>
+            <table class="table table-bordered" style="color: #FFFFFF">
+                <tbody>
+                    <tr *ngFor="let spell of clss.spells; let i = index">
+                        <ng-container *ngIf="i % 5 == 0" class="row">
+                            <td>{{ spell.name }}</td>
+                            <td *ngIf="i + 1 < clss.spells.length" class="column">{{ clss.spells[i + 1].name }}</td>
+                            <td *ngIf="i + 2 < clss.spells.length" class="column">{{ clss.spells[i + 2].name }}</td>
+                            <td *ngIf="i + 3 < clss.spells.length" class="column">{{ clss.spells[i + 3].name }}</td>
+                            <td *ngIf="i + 4 < clss.spells.length" class="column">{{ clss.spells[i + 4].name }}</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
     </div>
