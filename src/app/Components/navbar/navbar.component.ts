@@ -62,26 +62,31 @@ navToRace(index: string) {
     signIn(){
       let un =(<HTMLInputElement>document.getElementById('usernameField')).value
       let p =(<HTMLInputElement>document.getElementById('passwordField')).value
-      console.log(un);
+      //console.log(un);
       this.ls.signIn(un, p).subscribe((response:any) => {
         if(response){
           this.u = response;
           this.loggedIn = true;
-          console.log(this.u); 
+          sessionStorage.setItem('user', this.u.user_id.toString());
+          console.log(this.u);
         }
          }
       );
-        console.log('Am I here?')
+        if(sessionStorage.getItem('user') != null){
+          this.signIn();
+        }
         // this.ls.update(users).subscribe();
         if(this.loggedIn == true){
+          window.location.reload();
          // document.getElementById("login_row").innerText = "YOU HAVE LOGGED IN!";
           // in getElementById() I want to route it to the user profile /user/profile add the profile to app-routing
           //document.getElementById().('Welcome' + " " + un)          
         }else{
           this.loggedIn == false;
-          console.log('am I here??')
+          //console.log('am I here??')
           document.getElementById('unsuccessful').innerText = 'Invalid username or password. Try again!'
         }
+    
 
       // this.isSubmitted = true;
       // if(this.authForm.invalid){
@@ -90,7 +95,7 @@ navToRace(index: string) {
       // this.ls.signIn(un, p).subscribe((users:any) => {
       // this.u = users;
       // console.log(this.u);
-
+      
     }
 
   // login() {
@@ -100,6 +105,8 @@ navToRace(index: string) {
   signOut() {
     this.ls.signOut();
     this.loggedIn = false;
+    sessionStorage.clear();
+    window.location.reload();
   }
 
   

@@ -11,6 +11,7 @@ import { ReferenceClassesComponent } from './components/reference-classes/refere
 import { ReferenceRacesComponent } from './components/reference-races/reference-races.component';
 import { ReferenceSpellsComponent } from './components/reference-spells/reference-spells.component';
 import { ReferenceSpellsSplashComponent } from './components/reference-spells-splash/reference-spells-splash.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'reference/spells', component: ReferenceSpellsComponent },
   { path: 'reference/spells/index', component: ReferenceSpellsSplashComponent },
   { path: 'auth', component: AuthComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'profile', component: UserEditComponent}
 ];
 
 @NgModule({
