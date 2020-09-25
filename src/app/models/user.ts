@@ -1,9 +1,9 @@
 import { EmailValidator } from '@angular/forms';
 
 export class User {
-    private username: string;
+    public username: string;
     private password: string;
-    private first_name: string;
+    public first_name: string;
     private last_name: string;
     private email: string;
 

@@ -147,9 +147,9 @@
         </div>
         <div id="spells" hidden><!--Character Spells-->
             <b>Spells:</b>
-            <div id = "spellsChange" (change)="checkSpells()">
+            <div id = "spellsChange">
                 <table style="width:90%; margin:auto">
-                <tr *ngFor="let spell of clss.spells" id = {{spell.name}}>
+                <tr *ngFor="let spell of clss.spells" id = {{spell.name}} class = "yourSpells">
                     <td>
                         {{spell.name}}
                     </td>

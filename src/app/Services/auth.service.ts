@@ -6,6 +6,7 @@ import { User } from '../models/user';
 })
 export class AuthService {
 
+  u:User;
   constructor() { }
 
 // public signIn(userData: User){
