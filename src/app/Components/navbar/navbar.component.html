@@ -22,8 +22,9 @@
                         <label class="form-check-label" for="dropdownCheck">Remember me</label>
                     </div>
                     <button class="btn white btn-outline-info" id="signIn" (click)="signIn()">Sign in</button>
+                    <p id ="login_row"></p>
                 </form>
-                <div id ='unsuccessful'></div>
+                <p id ='unsuccessful'></p>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" routerLink="/register">Register</a>
             </div>
@@ -65,15 +66,15 @@
                 <div ngbDropdown placement="left-top" class="dropdown dropleft">
                     <button class="btn drpdwn btn-block" id="dropdownRaces" ngbDropdownToggle>Races</button>
                     <div class="w-100" ngbDropdownMenu>
-                        <a routerLink="/reference/races" routerLinkActive="active" ngbDropdownItem>Dragonborn</a>
-                        <button ngbDropdownItem>Dwarf</button>
-                        <button ngbDropdownItem>Elf</button>
-                        <button ngbDropdownItem>Gnome</button>
-                        <button ngbDropdownItem>Half-Elf</button>
-                        <button ngbDropdownItem>Half-Orc</button>
-                        <button ngbDropdownItem>Halfling</button>
-                        <button ngbDropdownItem>Human</button>
-                        <button ngbDropdownItem>Tiefling</button>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('dragonborn')" ngbDropdownItem>Dragonborn</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('dwarf')" ngbDropdownItem>Dwarf</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('elf')" ngbDropdownItem>Elf</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('gnome')" ngbDropdownItem>Gnome</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('half-elf')" ngbDropdownItem>Half-Elf</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('half-orc')" ngbDropdownItem>Half-Orc</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('halfling')" ngbDropdownItem>Halfling</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('human')" ngbDropdownItem>Human</a>
+                        <a routerLink="/reference/races" routerLinkActive="active" (click)="navToRace('tiefling')" ngbDropdownItem>Tiefling</a>
                     </div>
                 </div>
                 <div ngbDropdown placement="left-top" class="dropdown dropleft">
@@ -90,6 +91,7 @@
                         <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('rogue')" ngbDropdownItem>Rogue</a>
                         <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('sorcerer')" ngbDropdownItem>Sorcerer</a>
                         <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('warlock')" ngbDropdownItem>Warlock</a>
+                        <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('wizard')" ngbDropdownItem>Wizard</a>
                     </div>
                 </div>
             </div>

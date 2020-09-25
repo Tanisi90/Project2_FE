@@ -4,6 +4,8 @@ import { LoginService } from 'src/app/Services/login.service';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { User } from 'src/app/models/user';
 import { ClassService } from 'src/app/Services/class.service';
+import { RaceService } from 'src/app/Services/race.service';
+import { Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +17,7 @@ export class NavbarComponent implements OnInit {
   loggedIn : boolean = false;
 
   u: User;
-  constructor(private ls: LoginService, private cs: ClassService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private ls: LoginService, private cs: ClassService, private rs: RaceService, private formBuilder: FormBuilder, private router: Router) {
     //this.ls.loggedIn.subscribe( value => {
       //this.loggedIn = value;
   //});
@@ -28,6 +30,17 @@ navToClass(index: string) {
   } else {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigateByUrl('/reference/classes');
+  }); 
+  }
+}
+
+navToRace(index: string) {
+  this.rs.setIndex(index);
+  if(this.router.url != '/reference/races') {
+    this.router.navigateByUrl('/reference/races');
+  } else {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl('/reference/races');
   }); 
   }
 }
@@ -49,19 +62,24 @@ navToClass(index: string) {
     signIn(){
       let un =(<HTMLInputElement>document.getElementById('usernameField')).value
       let p =(<HTMLInputElement>document.getElementById('passwordField')).value
-      //console.log(un);
+      console.log(un);
       this.ls.signIn(un, p).subscribe((response:any) => {
         if(response){
           this.u = response;
           this.loggedIn = true;
           console.log(this.u); 
         }
+         }
+      );
+        console.log('Am I here?')
         // this.ls.update(users).subscribe();
         if(this.loggedIn == true){
+         // document.getElementById("login_row").innerText = "YOU HAVE LOGGED IN!";
           // in getElementById() I want to route it to the user profile /user/profile add the profile to app-routing
           //document.getElementById().('Welcome' + " " + un)          
         }else{
           this.loggedIn == false;
+          console.log('am I here??')
           document.getElementById('unsuccessful').innerText = 'Invalid username or password. Try again!'
         }
 
@@ -73,8 +91,6 @@ navToClass(index: string) {
       // this.u = users;
       // console.log(this.u);
 
-      }
-      );
     }
 
   // login() {
@@ -85,5 +101,7 @@ navToClass(index: string) {
     this.ls.signOut();
     this.loggedIn = false;
   }
+
+  
  
 }

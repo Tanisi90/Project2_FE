@@ -11,7 +11,6 @@ import { Subrace } from '../models/subrace';
 export class RaceService {
   private url: string = "https://www.dnd5eapi.co";
   private index: string;
-  private interim:string;
 
   constructor(private http:HttpClient) { }
 
@@ -88,16 +87,16 @@ export class RaceService {
     this.index = index;
   }
 
-  getRace(index: string): Observable<any> {
-    return this.http.get(this.url + "/api/races/" + index + "/");
+  getRace(): Observable<any> {
+    return this.http.get(this.url + "/api/races/" + this.index + "/");
   }
 
   parseRace(r: any): Race {
-    let abilityBonus: {[key:number]: string}[] = [];
+    let bonus: number[] = [];
+    let ability: string[] = [];
     for(let i in r["ability_bonuses"]) {
-      let k: number = r["ability_bonuses"][i]["bonus"];
-      let v: string = r["ability_bonuses"][i]["name"];
-      abilityBonus.push({[k]: v});
+      bonus[i] = r["ability_bonuses"][i]["bonus"];
+      ability[i] = r["ability_bonuses"][i]["name"];
     }
     let size: string = r["size"] + ": " + r["size_description"];
     let profs: string[] = [];
@@ -156,7 +155,7 @@ export class RaceService {
     if(r["subraces"][0] != null) {
       subrace = this.parseSubrace(r["subraces"][0]["url"]);
     }
-    let rc = new Race(r["name"], r["speed"], abilityBonus, r["alignment"], r["age"], size, profs, language, features, subrace);
+    let rc = new Race(r["name"], r["speed"], bonus, ability, r["alignment"], r["age"], size, profs, language, features, subrace);
     console.log(rc);
     return rc;
   }
@@ -164,11 +163,11 @@ export class RaceService {
   parseSubrace(url2: string): Subrace[] {
     let sr: Subrace[] = [];
     this.http.get(this.url + url2).subscribe((r2: any) => {
-      let abilityBonus: {[key:number]: string}[] = [];
+      let bonus: number[] = [];
+      let ability: string[] = [];
       for(let i in r2["ability_bonuses"]) {
-        let k: number = r2["ability_bonuses"][i]["bonus"];
-        let v: string = r2["ability_bonuses"][i]["name"];
-        abilityBonus.push({[k]: v});
+        bonus[i] = r2["ability_bonuses"][i]["bonus"];
+        ability[i] = r2["ability_bonuses"][i]["name"];
       }
       let profs: string[] = [];
       for(let i in r2["starting_proficiencies"]) {
@@ -228,7 +227,7 @@ export class RaceService {
           features.push(new Feature(r3["name"], r3["desc"]));
         });
       }
-      sr.push(new Subrace(r2["name"], r2["desc"], abilityBonus, profs, language, features));
+      sr.push(new Subrace(r2["name"], r2["desc"], bonus, ability, profs, language, features));
     });
     return sr;
   }
