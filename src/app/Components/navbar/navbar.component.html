@@ -17,10 +17,6 @@
                         <label for="passwordField">Password</label>
                         <input type="password" class="form-control" id="passwordField">
                     </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                        <label class="form-check-label" for="dropdownCheck">Remember me</label>
-                    </div>
                     <button class="btn white btn-outline-info" id="signIn" (click)="signIn()">Sign in</button>
                     <p id ="login_row"></p>
                 </form>
@@ -33,7 +29,7 @@
             <button class="btn btn-outline-info btn-block" id="dropdownUser" style="background-color: black;"
                 ngbDropdownToggle>User</button>
             <div class="w-100" ngbDropdownMenu>
-                <button ngbDropdownItem>Edit Profile</button>
+                <a routerLink="/profile" routerLinkActive="active" ngbDropdownItem>Edit Profile</a>
                 <button ngbDropdownItem (click)="signOut()">Log Out</button>
             </div>
         </div>
@@ -94,6 +90,7 @@
                         <a routerLink="/reference/classes" routerLinkActive="active" (click)="navToClass('wizard')" ngbDropdownItem>Wizard</a>
                     </div>
                 </div>
+                <a routerLink="/reference/spells/index" routerLinkActive="active" ngbDropdownItem>Spells</a>
             </div>
         </div>
     </div>

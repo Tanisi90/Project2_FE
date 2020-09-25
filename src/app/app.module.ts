@@ -21,6 +21,9 @@ import { LoginComponent } from './Components/login/login.component';
 import { AuthComponent } from './Components/auth/auth.component';
 import { ReferenceClassesComponent } from './components/reference-classes/reference-classes.component';
 import { ReferenceRacesComponent } from './components/reference-races/reference-races.component';
+import { ReferenceSpellsComponent } from './components/reference-spells/reference-spells.component';
+import { ReferenceSpellsSplashComponent } from './components/reference-spells-splash/reference-spells-splash.component';
+
 
 
 @NgModule({
@@ -37,6 +40,8 @@ import { ReferenceRacesComponent } from './components/reference-races/reference-
     AuthComponent,
     ReferenceClassesComponent,
     ReferenceRacesComponent,
+    ReferenceSpellsComponent,
+    ReferenceSpellsSplashComponent
   ],
 
   imports: [

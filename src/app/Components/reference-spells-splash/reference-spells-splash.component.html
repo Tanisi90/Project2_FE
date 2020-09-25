@@ -1,0 +1,17 @@
+<div style="background: rgb(0,128,128); background: linear-gradient(0deg, rgba(0,128,128,1) 0%, rgba(153,153,153,1) 100%); height: 100%; width: 90%; text-align:center; margin:auto; position: static;">
+    <img src="assets/HeaderSpells.png">
+    <br><br>
+    <table class="table table-bordered" style="color: #FFFFFF">
+        <tbody>
+            <tr *ngFor="let spell of spells; let i = index">
+                <ng-container *ngIf="i % 5 == 0" class="row">
+                    <td><a routerLink="#" routerLinkActive="active" (click)="navToSpell(spell)">{{ spell }}</a></td>
+                    <td *ngIf="i + 1 < spells.length" class="column"><a routerLink="#" routerLinkActive="active" (click)="navToSpell(spells[i + 1])">{{ spells[i + 1] }}</a></td>
+                    <td *ngIf="i + 2 < spells.length" class="column"><a routerLink="#" routerLinkActive="active" (click)="navToSpell(spells[i + 2])">{{ spells[i + 2] }}</a></td>
+                    <td *ngIf="i + 3 < spells.length" class="column"><a routerLink="#" routerLinkActive="active" (click)="navToSpell(spells[i + 3])">{{ spells[i + 3] }}</a></td>
+                    <td *ngIf="i + 4 < spells.length" class="column"><a routerLink="#" routerLinkActive="active" (click)="navToSpell(spells[i + 4])">{{ spells[i + 4] }}</a></td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</div>

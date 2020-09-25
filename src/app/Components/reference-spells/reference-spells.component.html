@@ -1,0 +1,22 @@
+<div style="background: rgb(0,128,128); background: linear-gradient(0deg, rgba(0,128,128,1) 0%, rgba(153,153,153,1) 100%); height: 100%; width: 90%; text-align:center; margin:auto; position: static;">
+    <img src="assets/HeaderSpells.png">
+    <h3>{{spell.name}}</h3>
+    <ng-container *ngIf="hasArray(spell.desc)">
+        <i>{{nth(spell.level)}}</i>
+        <p *ngFor="let d in spell.desc">
+            {{d}}
+        </p>
+    </ng-container>
+    <br><br>
+    <b>Casting Time:</b> {{spell.castingTime}}
+    <br>
+    <b>Range:</b> {{spell.range}}
+    <br>
+    <b>Components:</b> {{stringify(spell.components)}}
+    <br>
+    <b>Range:</b> {{spell.range}}
+    <br>
+    <b>Duration:</b> <ng-container *ngIf="spell.concentration">Concentration, </ng-container> {{spell.duration}}
+    <br><br>
+    {{spell.desc}}
+</div>

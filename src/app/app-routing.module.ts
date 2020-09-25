@@ -7,9 +7,11 @@ import { CampaignsNewComponent } from './components/campaigns-new/campaigns-new.
 import { CharactersNewComponent } from './components/characters-new/characters-new.component';
 import { AuthComponent } from './Components/auth/auth.component';
 import { LoginComponent } from './Components/login/login.component';
-import { AuthGuard } from './auth.guard';
 import { ReferenceClassesComponent } from './components/reference-classes/reference-classes.component';
 import { ReferenceRacesComponent } from './components/reference-races/reference-races.component';
+import { ReferenceSpellsComponent } from './components/reference-spells/reference-spells.component';
+import { ReferenceSpellsSplashComponent } from './components/reference-spells-splash/reference-spells-splash.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 
 const routes: Routes = [
@@ -19,8 +21,11 @@ const routes: Routes = [
   { path: 'characters/new', component: CharactersNewComponent }, 
   { path: 'reference/classes', component: ReferenceClassesComponent },
   { path: 'reference/races', component: ReferenceRacesComponent },
+  { path: 'reference/spells', component: ReferenceSpellsComponent },
+  { path: 'reference/spells/index', component: ReferenceSpellsSplashComponent },
   { path: 'auth', component: AuthComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'profile', component: UserEditComponent}
 ];
 
 @NgModule({

@@ -10,11 +10,9 @@ export class Spell {
     public concentration: boolean;
     public castingTime: string;
     public level: number;
-    public attackType: string;
-    public damageType: string;
     public school: string;
 
-    constructor(name: string, desc: string[], higherLevel: string[], range: number, components: string[], material: string, ritual: boolean, duration: string, concentration: boolean, castingTime: string, level: number, attackType: string, damageType: string, school: string) {
+    constructor(name: string, desc: string[], higherLevel: string[], range: number, components: string[], material: string, ritual: boolean, duration: string, concentration: boolean, castingTime: string, level: number, school: string) {
         this.name = name;
         this.desc = desc;
         this.higherLevel = higherLevel;
@@ -26,8 +24,6 @@ export class Spell {
         this.concentration = concentration;
         this.castingTime = castingTime;
         this.level = level;
-        this.attackType = attackType;
-        this.damageType = damageType;
         this.school = school;
     }
 }
