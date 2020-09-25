@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { User } from 'src/app/models/user';
 import { ClassService } from 'src/app/Services/class.service';
 import { RaceService } from 'src/app/Services/race.service';
+import { Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -61,19 +62,24 @@ navToRace(index: string) {
     signIn(){
       let un =(<HTMLInputElement>document.getElementById('usernameField')).value
       let p =(<HTMLInputElement>document.getElementById('passwordField')).value
-      //console.log(un);
+      console.log(un);
       this.ls.signIn(un, p).subscribe((response:any) => {
         if(response){
           this.u = response;
           this.loggedIn = true;
           console.log(this.u); 
         }
+         }
+      );
+        console.log('Am I here?')
         // this.ls.update(users).subscribe();
         if(this.loggedIn == true){
+         // document.getElementById("login_row").innerText = "YOU HAVE LOGGED IN!";
           // in getElementById() I want to route it to the user profile /user/profile add the profile to app-routing
           //document.getElementById().('Welcome' + " " + un)          
         }else{
           this.loggedIn == false;
+          console.log('am I here??')
           document.getElementById('unsuccessful').innerText = 'Invalid username or password. Try again!'
         }
 
@@ -85,8 +91,6 @@ navToRace(index: string) {
       // this.u = users;
       // console.log(this.u);
 
-      }
-      );
     }
 
   // login() {
