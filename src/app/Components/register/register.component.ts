@@ -38,12 +38,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   
-<<<<<<< HEAD
-    register(): void {
-      // return this.httpClient.post<User>('http://localhost:8080/data/user/update', user) as Observable<User>;
-    }
-}
-=======
     register(user): Observable<User> {
       return this.httpClient.post<User>('http://localhost:8080/data/user/signup', user) as Observable<User>;
     }
@@ -103,4 +97,3 @@ export class RegisterComponent implements OnInit {
 
   
 
->>>>>>> 04ad757778e3b451670371eddecba9ffe99e6884

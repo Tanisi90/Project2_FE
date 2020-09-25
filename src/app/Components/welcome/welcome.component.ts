@@ -15,6 +15,6 @@ export class WelcomeComponent implements OnInit {
 
   test() {
     this.ss.setIndex("acid-arrow");
-    this.ss.parseSpell(this.ss.getSpell());
+    // this.ss.parseSpell(this.ss.getSpell());
   }
 }
