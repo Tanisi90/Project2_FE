@@ -16,7 +16,7 @@ export class ReferenceRacesComponent implements OnInit {
     this.rs.getRace().subscribe(
       (response: any) => {
         this.race = this.rs.parseRace(response);
-      });
+    });
   }
 
   parseFeatures(list: Feature[]): string {

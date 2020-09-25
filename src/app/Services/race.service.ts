@@ -156,7 +156,6 @@ export class RaceService {
       subrace = this.parseSubrace(r["subraces"][0]["url"]);
     }
     let rc = new Race(r["name"], r["speed"], bonus, ability, r["alignment"], r["age"], size, profs, language, features, subrace);
-    console.log(rc);
     return rc;
   }
 

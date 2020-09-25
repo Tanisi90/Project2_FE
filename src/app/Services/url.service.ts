@@ -8,6 +8,6 @@ export class UrlService {
   constructor() { }
 
   parseUrl(index: string) {
-    return index.toLowerCase().replace(/\s*/g, "-");
+    return index.toLowerCase().replace(/\s/g, "-");
   }
 }

@@ -12,9 +12,4 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  test() {
-    this.ss.setIndex("acid-arrow");
-    // this.ss.parseSpell(this.ss.getSpell());
-  }
 }
