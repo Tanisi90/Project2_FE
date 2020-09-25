@@ -1,6 +1,6 @@
 table {
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
 td.lvl {
@@ -9,18 +9,4 @@ td.lvl {
 
 tr.lvl:hover {
       background-color: #999999;
-}
-
-td.features {
-    border-top: 1px solid #000000;
-    vertical-align: middle;
-}
-
-td.spells {
-    border-top: 1px solid #000000;
-    text-align: middle;
-}
-
-tr.spells:hover {
-    background-color: #999999;
 }
